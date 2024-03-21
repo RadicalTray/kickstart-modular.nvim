@@ -67,6 +67,17 @@ return {
             require('telescope.themes').get_dropdown(),
           },
         },
+        -- My buffers config
+        pickers = {
+          buffers = {
+            sort_lastused = true,
+            mappings = {
+              n = {
+                ['d'] = 'delete_buffer',
+              },
+            },
+          },
+        },
       }
 
       -- Enable Telescope extensions if they are installed

@@ -6,6 +6,7 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
+        -- Commented this out because I can't use it (I don't have it?)
         -- markdown = { 'markdownlint' },
       }
 
