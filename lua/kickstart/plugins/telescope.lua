@@ -43,7 +43,7 @@ return {
       -- a corresponding preview of the help.
       --
       -- Two important keymaps to use while in Telescope are:
-      --  - Insert mode: <c-/>
+      --  - Insert mode: <C-/>
       --  - Normal mode: ?
       --
       -- This opens a window that shows you all of the keymaps for the current
@@ -58,7 +58,7 @@ return {
         --
         -- defaults = {
         --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+        --     i = { ['<C-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
         pickers = {
@@ -68,6 +68,9 @@ return {
             mappings = {
               n = {
                 ['d'] = 'delete_buffer',
+              },
+              i = {
+                ['<C-d>'] = 'delete_buffer',
               },
             },
           },
