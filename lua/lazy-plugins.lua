@@ -60,7 +60,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  -- Commented these out because I don't use it.
+  -- Commented these out because I don't use it. I also don't use debugging but just in case :D
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
 
