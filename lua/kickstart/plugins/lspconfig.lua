@@ -167,6 +167,7 @@ return {
         cssls = {},
         tailwindcss = {},
         html = {},
+        jdtls = {},
       }
 
       -- Ensure the servers and tools above are installed
