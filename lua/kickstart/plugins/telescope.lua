@@ -52,8 +52,7 @@ return {
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      local default_theme = { defaults = require('telescope.themes').get_ivy() }
-      local half_setup_tbl = {
+      local setup_tbl = {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
@@ -109,8 +108,9 @@ return {
         },
       }
 
-      local full_setup_tbl = vim.tbl_deep_extend('force', default_theme, half_setup_tbl)
-      require('telescope').setup(full_setup_tbl)
+      local default_theme = { defaults = require('telescope.themes').get_ivy() }
+
+      require('telescope').setup(vim.tbl_deep_extend('keep', setup_tbl, default_theme))
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
