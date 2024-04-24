@@ -52,7 +52,8 @@ return {
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').setup {
+      local default_theme = { defaults = require('telescope.themes').get_ivy() }
+      local half_setup_tbl = {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
@@ -64,6 +65,8 @@ return {
             '--with-filename',
             '--line-number',
             '--column',
+            -- above is probably a must
+
             '--ignore-case',
             '--trim',
             '--hidden',
@@ -78,6 +81,8 @@ return {
               'fd',
               '--type',
               'f',
+              -- above is probably a must
+
               '--strip-cwd-prefix',
               '--hidden',
               '--follow',
@@ -104,6 +109,8 @@ return {
         },
       }
 
+      local full_setup_tbl = vim.tbl_deep_extend('force', default_theme, half_setup_tbl)
+      require('telescope').setup(full_setup_tbl)
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
@@ -124,10 +131,7 @@ return {
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
+        builtin.current_buffer_fuzzy_find { previewer = false }
       end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- It's also possible to pass additional configuration options.
