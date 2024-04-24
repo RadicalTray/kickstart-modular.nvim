@@ -8,11 +8,10 @@ return {
     require('telescope').setup {
       extensions = {
         file_browser = {
-          -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
           cwd_to_path = true,
-          follow_symlinks = true,
-          hidden = { file_browser = true, folder_browser = true },
+          follow_symlinks = true, -- why is this not true by default? does this break something?
+          respect_gitignore = false,
+          hijack_netrw = true,
         },
       },
     }
