@@ -56,15 +56,34 @@ return {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<C-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--ignore-case',
+            '--trim',
+            '--hidden',
+            '--glob',
+            '!**/.git/*',
+          },
+        },
         pickers = {
           -- My config
           find_files = {
-            find_command = { 'fd', '-t', 'f', '--strip-cwd-prefix', '-H', '-L', '-E', '.git' },
+            find_command = {
+              'fd',
+              '--type',
+              'f',
+              '--strip-cwd-prefix',
+              '--hidden',
+              '--follow',
+              '--exclude',
+              '**/.git/*',
+            },
           },
           buffers = {
             sort_lastused = true,
