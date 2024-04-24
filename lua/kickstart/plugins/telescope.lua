@@ -62,7 +62,11 @@ return {
         --   },
         -- },
         pickers = {
-          -- My buffers config
+          -- My config
+          find_files = {
+            follow = true,
+            hidden = true,
+          },
           buffers = {
             sort_lastused = true,
             mappings = {
