@@ -64,8 +64,7 @@ return {
         pickers = {
           -- My config
           find_files = {
-            follow = true,
-            hidden = true,
+            find_command = { 'fd', '-t', 'f', '--strip-cwd-prefix', '-H', '-L', '-E', '.git' },
           },
           buffers = {
             sort_lastused = true,
