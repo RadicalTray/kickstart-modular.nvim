@@ -30,7 +30,7 @@ require('lazy').setup({
 
   require 'kickstart/plugins/gitsigns',
 
-  require 'kickstart/plugins/which-key',
+  -- require 'kickstart/plugins/which-key',
 
   require 'kickstart/plugins/telescope',
 
@@ -41,7 +41,6 @@ require('lazy').setup({
   require 'kickstart/plugins/cmp',
 
   -- require 'kickstart/plugins/tokyonight',
-  -- My preferred colorscheme
   require 'custom/moonfly',
 
   require 'kickstart/plugins/todo-comments',
