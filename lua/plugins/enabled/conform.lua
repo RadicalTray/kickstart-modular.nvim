@@ -6,6 +6,7 @@ local disable_filetypes = { c = true, cpp = true }
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
+    cmd = { 'ConformInfo' },
     keys = {
       {
         '<leader>f',

@@ -1,2 +1,2 @@
-return { 'numToStr/Comment.nvim', event = 'VimEnter', opts = {} }
+return { 'numToStr/Comment.nvim', event = { 'BufReadPost', 'BufNewFile' }, opts = {} }
 -- "gc" to comment visual regions/lines
