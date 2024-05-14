@@ -13,7 +13,6 @@ return {
 
     -- Add your own debuggers here
   },
-  event = { 'BufRead', 'BufNewFile' },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
