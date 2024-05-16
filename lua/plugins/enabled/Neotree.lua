@@ -8,7 +8,7 @@ return {
     -- "3rd/image.nvim", -- Optional image support in preview window
   },
   keys = {
-    { '<leader>oft', '<cmd>Neotree<CR>', desc = '[O]pen [F]ile [T]ree' },
+    { '<leader>nt', '<cmd>Neotree<CR>', desc = '[O]pen [F]ile [T]ree' },
   },
   opts = {
     filesystem = {
