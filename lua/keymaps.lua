@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.keymap.set('n', '<C-j>', '<cmd>cnext<CR>', { desc = 'Move to the next entry in the quickfix list' })
-vim.keymap.set('n', '<C-k>', '<cmd>cprev<CR>', { desc = 'Move to the prev entry in the quickfix list' })
+vim.keymap.set('n', ']q', '<cmd>cnext<CR>', { desc = 'Move to the next entry in the quickfix list' })
+vim.keymap.set('n', '[q', '<cmd>cprev<CR>', { desc = 'Move to the prev entry in the quickfix list' })
 
 -- vim: ts=2 sts=2 sw=2 et
