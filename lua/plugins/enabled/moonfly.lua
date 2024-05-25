@@ -3,6 +3,7 @@ return {
   name = 'moonfly',
   priority = 1000,
   init = function()
+    vim.g.moonflyTransparent = true
     vim.cmd.colorscheme 'moonfly'
   end,
 }
