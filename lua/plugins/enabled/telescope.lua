@@ -27,6 +27,7 @@ return {
             '--column',
             -- above is probably a must
 
+            '--follow',
             '--ignore-case',
             '--trim',
             '--hidden',
