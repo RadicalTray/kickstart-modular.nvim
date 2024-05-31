@@ -1,6 +1,6 @@
 return {
   'folke/trouble.nvim',
-  branch = 'dev', -- IMPORTANT!
+  cmd = 'Trouble',
   keys = {
     {
       '<leader>xX',
@@ -23,15 +23,15 @@ return {
       desc = 'LSP Definitions / references / ... (Trouble)',
     },
     {
-      '<leader>xl',
+      '<leader>xL',
       '<cmd>Trouble loclist toggle<cr>',
       desc = 'Location List (Trouble)',
     },
     {
-      '<leader>xq',
+      '<leader>xQ',
       '<cmd>Trouble qflist toggle<cr>',
       desc = 'Quickfix List (Trouble)',
     },
   },
-  opts = {},
+  opts = {}, -- for default options, refer to the configuration section for custom setup.
 }
