@@ -2,6 +2,7 @@
 -- have a well standardized coding style. You can add additional
 -- languages here or re-enable it for the disabled ones.
 local disable_filetypes = { c = true, cpp = true }
+-- local force_filetypes = { javascript = true }
 
 return {
   { -- Autoformat
@@ -14,6 +15,8 @@ return {
           require('conform').format {
             async = true,
             lsp_fallback = not disable_filetypes[vim.bo.filetype],
+            -- lsp_fallback = (not disable_filetypes[vim.bo.filetype]) and (force_filetypes[vim.bo.filetype] and 'always'),
+            -- TODO: this ugly bruh, and also it doesn't work :D AND the problem is LSP's formatting server order
           }
         end,
         desc = '[F]ormat buffer',
