@@ -93,6 +93,7 @@ return {
         html = {},
         jdtls = {},
         bashls = {},
+        pylsp = {},
       }
 
       require('mason').setup()
