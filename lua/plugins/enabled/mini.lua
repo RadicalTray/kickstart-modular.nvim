@@ -4,8 +4,8 @@ return {
     event = 'VeryLazy',
     version = false,
     config = function()
-      require('mini.ai').setup { n_lines = 500 }
-      require('mini.surround').setup { n_lines = 500 }
+      require('mini.ai').setup {}
+      require('mini.surround').setup {}
       require('mini.git').setup()
     end,
   },
