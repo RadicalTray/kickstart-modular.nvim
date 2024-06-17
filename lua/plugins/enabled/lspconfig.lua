@@ -86,7 +86,7 @@ return {
             },
           },
         },
-        tsserver = {},
+        vtsls = {},
         eslint = {},
         cssls = {},
         tailwindcss = {},
@@ -94,6 +94,7 @@ return {
         jdtls = {},
         bashls = {},
         pylsp = {},
+        clangd = {},
       }
 
       require('mason').setup()
