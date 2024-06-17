@@ -6,8 +6,8 @@ return {
     require('lualine').setup {
       options = {
         icons_enabled = true,
-        theme = 'auto',
-        -- theme = require 'neofusion.lualine',
+        --- @usage 'rose-pine' | 'rose-pine-alt'
+        theme = 'rose-pine-alt',
         component_separators = '',
         section_separators = '',
         disabled_filetypes = {
