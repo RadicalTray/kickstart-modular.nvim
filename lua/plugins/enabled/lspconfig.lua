@@ -104,6 +104,7 @@ return {
         'stylua',
         'beautysh',
         'prettierd',
+        'clang-format',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
