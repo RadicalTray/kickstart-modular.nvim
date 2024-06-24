@@ -14,7 +14,8 @@ return {
         },
       }
 
-      vim.keymap.set('n', '<leader>tgb', '<cmd>Gitsigns toggle_current_line_blame<CR>', { desc = '[T]oggle [G]it [B]lame' })
+      vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle [G]it [B]lame' })
+      vim.keymap.set('n', '<leader>gh', '<cmd>Gitsigns preview_hunk_inline<CR>', { desc = 'Preview [G]it [H]unk' })
     end,
   },
 }
