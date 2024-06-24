@@ -46,14 +46,28 @@ return {
       })
 
       require('mini.visits').setup {}
+      vim.keymap.set('n', '<a-h>', function()
+        MiniVisits.iterate_paths('backward', nil, { wrap = true })
+      end, {
+        desc = 'Go to previous path',
+      })
+      vim.keymap.set('n', '<a-l>', function()
+        MiniVisits.iterate_paths('forward', nil, { wrap = true })
+      end, {
+        desc = 'Go to next path',
+      })
+      vim.keymap.set('n', '<leader>sp', MiniVisits.select_path, {
+        desc = '[S]earch visited [P]aths',
+      })
+      vim.keymap.set('n', '<leader>rp', MiniVisits.remove_path, {
+        desc = '[R]emove [P]ath',
+      })
+
       vim.keymap.set('n', '<leader>al', MiniVisits.add_label, {
         desc = '[A]dd [L]abel',
       })
       vim.keymap.set('n', '<leader>rl', MiniVisits.remove_label, {
         desc = '[R]emove [L]abel',
-      })
-      vim.keymap.set('n', '<leader>sp', MiniVisits.select_path, {
-        desc = '[S]earch visited [P]aths',
       })
       vim.keymap.set('n', '<leader>sl', MiniVisits.select_label, {
         desc = '[S]earch [L]abels',
