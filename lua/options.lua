@@ -80,12 +80,17 @@ end, {
   desc = 'Disable autoformat-on-save',
   bang = true,
 })
-vim.api.nvim_create_user_command('AutoFormatEnable', function()
-  ---@diagnostic disable-next-line: inject-field
-  vim.b.disable_autoformat = false
-  vim.g.disable_autoformat = false
+vim.api.nvim_create_user_command('AutoFormatEnable', function(args)
+  if args.bang then
+    -- FormatEnable! will disable formatting just for this buffer
+    ---@diagnostic disable-next-line: inject-field
+    vim.b.disable_autoformat = false
+  else
+    vim.g.disable_autoformat = false
+  end
 end, {
   desc = 'Re-enable autoformat-on-save',
+  bang = true,
 })
 
 -- vim: ts=2 sts=2 sw=2 et
