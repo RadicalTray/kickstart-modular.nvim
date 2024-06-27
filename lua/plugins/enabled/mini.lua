@@ -46,12 +46,12 @@ return {
       })
 
       require('mini.visits').setup {}
-      vim.keymap.set('n', '<a-h>', function()
+      vim.keymap.set('n', '<c-H>', function()
         MiniVisits.iterate_paths('backward', nil, { wrap = true })
       end, {
         desc = 'Go to previous path',
       })
-      vim.keymap.set('n', '<a-l>', function()
+      vim.keymap.set('n', '<c-L>', function()
         MiniVisits.iterate_paths('forward', nil, { wrap = true })
       end, {
         desc = 'Go to next path',

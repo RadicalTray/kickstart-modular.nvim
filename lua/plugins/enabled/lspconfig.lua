@@ -66,7 +66,6 @@ return {
           },
         },
         omnisharp = {
-          cmd = { 'dotnet', '/home/user/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll' },
           settings = {
             FormattingOptions = {
               EnableEditorConfigSupport = true,
