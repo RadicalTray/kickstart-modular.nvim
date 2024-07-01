@@ -78,7 +78,6 @@ return {
               EnableAnalyzersSupport = false,
               EnableImportCompletion = true,
               AnalyzeOpenDocumentsOnly = true,
-              EnableDecompilationSupport = true,
             },
             Sdk = {
               IncludePrereleases = true,
