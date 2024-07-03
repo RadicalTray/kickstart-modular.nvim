@@ -26,5 +26,8 @@ return {
       group_empty_dirs = true,
       hijack_netrw_behavior = 'disabled',
     },
+    window = {
+      position = 'right',
+    },
   },
 }
