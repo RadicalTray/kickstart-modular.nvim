@@ -4,9 +4,9 @@ return {
     event = 'VimEnter',
     version = false,
     config = function()
+      -- require('mini.animate').setup {}
       require('mini.ai').setup {}
       require('mini.surround').setup {}
-
       require('mini.git').setup {}
 
       vim.keymap.set('n', '<leader>gl', '<cmd>Git log<CR>', {
