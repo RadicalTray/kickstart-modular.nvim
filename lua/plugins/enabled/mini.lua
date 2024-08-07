@@ -46,16 +46,17 @@ return {
       })
 
       require('mini.visits').setup {}
-      vim.keymap.set('n', '<c-H>', function()
-        MiniVisits.iterate_paths('backward', nil, { wrap = true })
-      end, {
-        desc = 'Go to previous path',
-      })
-      vim.keymap.set('n', '<c-L>', function()
-        MiniVisits.iterate_paths('forward', nil, { wrap = true })
-      end, {
-        desc = 'Go to next path',
-      })
+      -- BUG: Zellij stops <c-j> from working, and doesn't support CTRL+SHIFT
+      -- vim.keymap.set('n', '<c-j>', function()
+      --   MiniVisits.iterate_paths('backward', nil, { wrap = true })
+      -- end, {
+      --   desc = 'Go to previous path',
+      -- })
+      -- vim.keymap.set('n', '<c-k>', function()
+      --   MiniVisits.iterate_paths('forward', nil, { wrap = true })
+      -- end, {
+      --   desc = 'Go to next path',
+      -- })
       vim.keymap.set('n', '<leader>sp', MiniVisits.select_path, {
         desc = '[S]earch visited [P]aths',
       })
