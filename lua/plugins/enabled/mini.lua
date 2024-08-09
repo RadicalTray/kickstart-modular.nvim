@@ -46,7 +46,7 @@ return {
       })
 
       require('mini.visits').setup {}
-      -- BUG: Zellij stops <c-j> from working, and doesn't support CTRL+SHIFT
+      -- BUG: Zellij(?) stops <c-j> from working (becomes ^M), and doesn't support CTRL+SHIFT (probably zellij)
       -- vim.keymap.set('n', '<c-j>', function()
       --   MiniVisits.iterate_paths('backward', nil, { wrap = true })
       -- end, {
