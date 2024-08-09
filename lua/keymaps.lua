@@ -58,8 +58,8 @@ vim.keymap.set('n', ']q', '<cmd>cnext<CR>', { desc = 'Move to the next entry in 
 vim.keymap.set('n', '[q', '<cmd>cprev<CR>', { desc = 'Move to the prev entry in the quickfix list' })
 
 -- Make moving up/down -> move up/down to a line including wrapped text, instead of only moving up/down to a real line
-vim.keymap.set('n', 'k', 'gk')
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', '<up>', 'g<up>')
-vim.keymap.set('n', '<down>', 'g<down>')
+-- vim.keymap.set('n', 'k', 'gk')
+-- vim.keymap.set('n', 'j', 'gj')
+-- vim.keymap.set('n', '<up>', 'g<up>')
+-- vim.keymap.set('n', '<down>', 'g<down>')
 -- vim: ts=2 sts=2 sw=2 et
