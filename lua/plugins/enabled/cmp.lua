@@ -1,7 +1,7 @@
 return {
   -- Autocompletion
   'hrsh7th/nvim-cmp',
-  enabled = true,
+  enabled = false,
   event = 'InsertEnter',
   dependencies = {
     -- Adds other completion capabilities.
