@@ -14,7 +14,8 @@ return {
         'DiffviewRefresh',
       },
     },
-    'nvim-telescope/telescope.nvim',
+    -- 'nvim-telescope/telescope.nvim',
+    'ibhagwan/fzf-lua',
   },
   cmd = 'Neogit',
   keys = {

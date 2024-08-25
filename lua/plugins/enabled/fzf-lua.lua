@@ -1,6 +1,7 @@
 return {
   -- requires fzf, ofc
   'ibhagwan/fzf-lua',
+  event = 'VimEnter',
   dependencies = {
     'nvim-tree/nvim-web-devicons', -- optional
     -- optional external dependencies
