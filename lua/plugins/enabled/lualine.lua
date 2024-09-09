@@ -1,49 +1,44 @@
 return {
   'nvim-lualine/lualine.nvim',
+  enabled = false,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   event = 'VeryLazy',
-  config = function()
-    require('lualine').setup {
-      options = {
-        icons_enabled = true,
-        --- --- @usage 'rose-pine' | 'rose-pine-alt'
-        --- theme = 'rose-pine-alt',
-        theme = 'auto',
-        component_separators = '',
-        section_separators = '',
-        disabled_filetypes = {
-          statusline = {},
-          winbar = {},
+  opts = {
+    options = {
+      icons_enabled = false,
+      component_separators = '',
+      section_separators = '',
+      always_divide_middle = false,
+    },
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = { 'branch' },
+      lualine_c = {
+        {
+          'filename',
+          padding = { left = 1, right = 0 },
+          newfile_status = true,
+          path = 1,
         },
-        ignore_focus = {},
-        always_divide_middle = true,
-        globalstatus = false,
-        refresh = {
-          statusline = 1000,
-          tabline = 1000,
-          winbar = 1000,
+        {
+          'filetype',
+          fmt = function(str)
+            if str == '' then
+              return str
+            end
+            return '[' .. str .. ']'
+          end,
         },
       },
-      sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      tabline = {},
-      winbar = {},
-      inactive_winbar = {},
-      extensions = {},
-    }
-  end,
+      lualine_x = { 'searchcount', {
+        '%S',
+        padding = {
+          left = 0,
+          right = 1,
+        },
+      } },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location' },
+    },
+  },
 }

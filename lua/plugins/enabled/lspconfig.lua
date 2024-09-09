@@ -1,6 +1,6 @@
 return {
   'williamboman/mason-lspconfig.nvim',
-  enabled = false,
+  -- enabled = false,
   dependencies = {
     {
       'neovim/nvim-lspconfig',
@@ -24,7 +24,7 @@ return {
 
             local fzf = require 'fzf-lua'
             map('gd', fzf.lsp_definitions, '[G]oto [D]efinition')
-            map('gr', fzf.lsp_references, '[G]oto [R]eferences')
+            map('<leader>sr', fzf.lsp_references, '[S]earch [R]eferences')
             map('gI', fzf.lsp_implementations, '[G]oto [I]mplementation')
             map('<leader>ca', fzf.lsp_code_actions, '[C]ode [A]ction')
             map('gD', fzf.lsp_declarations, '[G]oto [D]eclaration')

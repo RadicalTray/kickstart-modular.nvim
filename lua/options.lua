@@ -12,8 +12,13 @@ vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.mousescroll = 'ver:1,hor:1'
 
--- Don't show the mode, since it's already in the status line
+-- vim.opt.laststatus = -1 -- bye :(
 vim.opt.showmode = false
+vim.opt.showcmd = true
+vim.opt.showcmdloc = 'statusline'
+vim.opt.laststatus = 3
+vim.opt.cmdheight = 0
+-- vim.opt.statusline = '%#Normal#%q%f %y %h%r%m%w %=%-15.(%l,%c %p%%%) %S %L Lines'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -50,7 +55,12 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '↲' }
+vim.opt.listchars = {
+  tab = '» ',
+  trail = '·',
+  nbsp = '␣',
+  -- eol = '↲',
+}
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'

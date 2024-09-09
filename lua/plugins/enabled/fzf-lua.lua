@@ -22,12 +22,12 @@ return {
     vim.keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', fzf.diagnostics_document, { desc = '[S]earch [D]iagnostics in this document' })
     vim.keymap.set('n', '<leader>sD', fzf.diagnostics_workspace, { desc = '[S]earch [D]iagnostics in this workspace' })
-    vim.keymap.set('n', '<leader>sr', fzf.resume, { desc = '[S]earch [R]e[S]ume' })
+    vim.keymap.set('n', '<leader>s.', fzf.resume, { desc = '[S]earch resume' })
     vim.keymap.set('n', '<leader>sR', fzf.registers, { desc = '[S]earch [R]e[G]isters' })
     vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>/', function()
+    vim.keymap.set('n', '<leader>s/', function()
       fzf.blines { previewer = false }
-    end, { desc = '[/] Fuzzily search in current buffer' })
+    end, { desc = '[S]earch in current buffer' })
 
     vim.keymap.set('n', '<leader>sn', function()
       fzf.files { cwd = vim.fn.stdpath 'config' }
