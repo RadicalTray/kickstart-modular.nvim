@@ -18,7 +18,7 @@ vim.opt.showcmd = true
 vim.opt.showcmdloc = 'statusline'
 vim.opt.laststatus = 3
 vim.opt.cmdheight = 0
--- vim.opt.statusline = '%#Normal#%q%f %y %h%r%m%w %=%-15.(%l,%c %p%%%) %S %L Lines'
+vim.opt.statusline = require 'statusline'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
