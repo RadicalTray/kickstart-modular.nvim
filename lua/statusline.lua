@@ -41,10 +41,19 @@ function Get_stl_mode()
   else
     fg = 'lightcyan'
   end
-  vim.api.nvim_set_hl(0, 'StlMode', { fg = fg })
+  vim.api.nvim_set_hl(0, 'StlMode', { fg = fg, bold = true })
   return string.format('[%s]', m or '???')
 end
 
-vim.api.nvim_set_hl(0, 'StlText', {})
+function Get_reg_recording()
+  local reg = vim.fn.reg_recording()
+  if reg == '' then
+    return ''
+  end
+  return string.format('<rec "%s> ', reg)
+end
 
-return '%#StlMode#%{v:lua.Get_stl_mode()}%#StlText# %<%q%f %y %h%r%m%w %=%S %l:%c %p%% %L Lines '
+vim.api.nvim_set_hl(0, 'StlText', {})
+vim.api.nvim_set_hl(0, 'StlReg', { fg = 'purple', bold = true })
+
+return '%#StlMode#%{v:lua.Get_stl_mode()}%#StlText# %<%q%f %y %h%r%m%w %=%S %#StlReg#%{v:lua.Get_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '
