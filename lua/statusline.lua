@@ -42,7 +42,7 @@ function Get_stl_mode()
     fg = 'lightcyan'
   end
   vim.api.nvim_set_hl(0, 'StlMode', { fg = fg })
-  return string.format('[%s]', m or '???'):upper()
+  return string.format('[%s]', m or '???')
 end
 
 vim.api.nvim_set_hl(0, 'StlText', {})
