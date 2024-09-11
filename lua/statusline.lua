@@ -27,7 +27,7 @@
 --   ['t'] = 'TERMINAL',
 -- }
 
-function Get_stl_mode()
+function Stl_mode()
   local m = vim.api.nvim_get_mode().mode
   local fg
   if m == 'n' or m == 'no' then
@@ -42,10 +42,30 @@ function Get_stl_mode()
     fg = 'lightcyan'
   end
   vim.api.nvim_set_hl(0, 'StlMode', { fg = fg, bold = true })
-  return string.format('[%s]', m or '???')
+  return string.format('[%s] ', m or '???')
 end
 
-function Get_reg_recording()
+vim.api.nvim_create_autocmd('BufEnter', {
+  desc = 'Fetch git branch into vim.g.stl_git_branch on BufEnter',
+  group = vim.api.nvim_create_augroup('custom-statusline', { clear = true }),
+  callback = function()
+    local result = vim.system({ 'git', 'rev-parse', '--abbrev-ref', 'HEAD' }, { cwd = vim.fn.expand '%:p:h' }):wait()
+    if result.code == 0 then
+      vim.g.stl_git_branch = string.gsub(result.stdout, '\n', '')
+    else
+      vim.g.stl_git_branch = nil
+    end
+  end,
+})
+
+function Stl_git_branch()
+  if vim.g.stl_git_branch == nil then
+    return ''
+  end
+  return string.format('(%s) ', vim.g.stl_git_branch)
+end
+
+function Stl_reg_recording()
   local reg = vim.fn.reg_recording()
   if reg == '' then
     return ''
@@ -54,6 +74,9 @@ function Get_reg_recording()
 end
 
 vim.api.nvim_set_hl(0, 'StlText', {})
+vim.api.nvim_set_hl(0, 'StlBranch', { fg = 'lightblue' })
 vim.api.nvim_set_hl(0, 'StlReg', { fg = 'purple', bold = true })
 
-return '%#StlMode#%{v:lua.Get_stl_mode()}%#StlText# %<%q%f %y %h%r%m%w %=%S %#StlReg#%{v:lua.Get_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '
+-- %{} strips out leading spaces if it's in the middle (i think)
+-- See https://github.com/neovim/neovim/issues/28918
+return '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StlText#%<%q%f %y %h%r%m%w %=%S %#StlReg#%{v:lua.Stl_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '
