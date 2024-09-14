@@ -6,10 +6,15 @@ return {
     -- require('mini.animate').setup {}
     require('mini.ai').setup {}
     require('mini.surround').setup {}
+
     require('mini.completion').setup {
       delay = { completion = 0, info = 0, signature = 0 },
       fallback_action = '<c-x><c-n>',
     }
+    vim.keymap.set('i', '<cr>', function()
+      return vim.fn.pumvisible() and '<c-e><cr>' or '<cr>'
+    end, { expr = true })
+
     require('mini.icons').setup {}
     require('mini.git').setup {}
 

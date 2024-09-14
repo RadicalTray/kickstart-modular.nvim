@@ -58,9 +58,10 @@ return {
       lua_ls = {
         settings = {
           Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
+            -- mini.completion doesn't support snippet rn
+            -- completion = {
+            --   callSnippet = 'Replace',
+            -- },
             -- diagnostics = { disable = { 'missing-fields' } },
           },
         },
