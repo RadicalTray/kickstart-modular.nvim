@@ -6,6 +6,11 @@ return {
     -- require('mini.animate').setup {}
     require('mini.ai').setup {}
     require('mini.surround').setup {}
+    require('mini.completion').setup {
+      delay = { completion = 0, info = 0, signature = 0 },
+      fallback_action = '<c-x><c-n>',
+    }
+    require('mini.icons').setup {}
     require('mini.git').setup {}
 
     vim.keymap.set('n', '<leader>gl', '<cmd>Git log<CR>', {
@@ -44,7 +49,7 @@ return {
       desc = 'Toggle [G]it [H]unk overlay',
     })
 
-    require('mini.visits').setup {}
+    -- require('mini.visits').setup {}
     -- BUG: Zellij(?) stops <c-j> from working (becomes ^M), and doesn't support CTRL+SHIFT (probably zellij)
     -- vim.keymap.set('n', '<c-j>', function()
     --   MiniVisits.iterate_paths('backward', nil, { wrap = true })
@@ -56,22 +61,22 @@ return {
     -- end, {
     --   desc = 'Go to next path',
     -- })
-    vim.keymap.set('n', '<leader>sp', MiniVisits.select_path, {
-      desc = '[S]earch visited [P]aths',
-    })
-    vim.keymap.set('n', '<leader>rp', MiniVisits.remove_path, {
-      desc = '[R]emove [P]ath',
-    })
-
-    vim.keymap.set('n', '<leader>al', MiniVisits.add_label, {
-      desc = '[A]dd [L]abel',
-    })
-    vim.keymap.set('n', '<leader>rl', MiniVisits.remove_label, {
-      desc = '[R]emove [L]abel',
-    })
-    vim.keymap.set('n', '<leader>sl', MiniVisits.select_label, {
-      desc = '[S]earch [L]abels',
-    })
+    -- vim.keymap.set('n', '<leader>sp', MiniVisits.select_path, {
+    --   desc = '[S]earch visited [P]aths',
+    -- })
+    -- vim.keymap.set('n', '<leader>rp', MiniVisits.remove_path, {
+    --   desc = '[R]emove [P]ath',
+    -- })
+    --
+    -- vim.keymap.set('n', '<leader>al', MiniVisits.add_label, {
+    --   desc = '[A]dd [L]abel',
+    -- })
+    -- vim.keymap.set('n', '<leader>rl', MiniVisits.remove_label, {
+    --   desc = '[R]emove [L]abel',
+    -- })
+    -- vim.keymap.set('n', '<leader>sl', MiniVisits.select_label, {
+    --   desc = '[S]earch [L]abels',
+    -- })
   end,
 }
 -- vim: ts=2 sts=2 sw=2 et

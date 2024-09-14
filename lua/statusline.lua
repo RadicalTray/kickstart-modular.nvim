@@ -49,7 +49,12 @@ vim.api.nvim_create_autocmd('BufEnter', {
   desc = 'Fetch git branch into vim.g.stl_git_branch on BufEnter',
   group = vim.api.nvim_create_augroup('custom-statusline', { clear = true }),
   callback = function()
-    local result = vim.system({ 'git', 'rev-parse', '--abbrev-ref', 'HEAD' }, { cwd = vim.fn.expand '%:p:h' }):wait()
+    local success, call = pcall(vim.system, { 'git', 'rev-parse', '--abbrev-ref', 'HEAD' }, { cwd = vim.fn.expand '%:p:h' })
+    if not success then
+      return
+    end
+
+    local result = call:wait()
     if result.code == 0 then
       vim.g.stl_git_branch = string.gsub(result.stdout, '\n', '')
     else
@@ -73,10 +78,32 @@ function Stl_reg_recording()
   return string.format('<rec "%s> ', reg)
 end
 
+-- is this expensive?
+function Stl_search_count()
+  local result = vim.fn.searchcount { recompute = 1 }
+  local searchStr = vim.fn.getreg '/'
+
+  -- timeout
+  if result.incomplete == 1 then
+    return string.format('/%s [??/??] ', searchStr)
+
+  -- max count exceeded
+  elseif result.incomplete == 2 then
+    if result.total > result.maxcount and result.current > result.maxcount then
+      return string.format('/%s [>%d/>%d] ', searchStr, result.current, result.total)
+    elseif result.total > result.maxcount then
+      return string.format('/%s [%d/>%d] ', searchStr, result.current, result.total)
+    end
+    return string.format 'dude idk config might be wrong '
+  end
+
+  return string.format('/%s [%d/%d] ', searchStr, result.current, result.total)
+end
+
 vim.api.nvim_set_hl(0, 'StlText', {})
 vim.api.nvim_set_hl(0, 'StlBranch', { fg = 'lightblue' })
 vim.api.nvim_set_hl(0, 'StlReg', { fg = 'purple', bold = true })
 
 -- %{} strips out leading spaces if it's in the middle (i think)
 -- See https://github.com/neovim/neovim/issues/28918
-return '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StlText#%<%q%f %y %h%r%m%w %=%S %#StlReg#%{v:lua.Stl_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '
+return '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StlText#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '
