@@ -9,7 +9,8 @@ return {
     require('mini.surround').setup {}
 
     require('mini.completion').setup {
-      delay = { completion = 0, info = 0, signature = 0 },
+      -- delay = { completion = 0, info = 0, signature = 0 },
+      lsp_completion = { source_func = 'omnifunc', auto_setup = false },
       fallback_action = '<c-x><c-n>',
     }
     vim.keymap.set('i', '<cr>', function()

@@ -8,6 +8,8 @@ return {
         vim.api.nvim_create_autocmd('LspAttach', {
           group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
           callback = function(event)
+            vim.o.omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
+
             local map = function(lhs, rhs, desc)
               vim.keymap.set('n', lhs, rhs, { buffer = event.buf, desc = 'LSP: ' .. desc })
             end

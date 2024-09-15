@@ -79,6 +79,7 @@ function Stl_reg_recording()
 end
 
 -- is this expensive?
+-- waiting for https://github.com/neovim/neovim/issues/18879
 function Stl_search_count()
   local result = vim.fn.searchcount { recompute = 1 }
   local searchStr = vim.fn.getreg '/'
