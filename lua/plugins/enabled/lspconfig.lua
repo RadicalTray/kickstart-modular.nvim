@@ -94,7 +94,7 @@ return {
       handlers = {
         function(server_name)
           local server = server_configs[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          server.capabilities = vim.tbl_deep_extend('keep', server.capabilities or {}, capabilities)
           require('lspconfig')[server_name].setup(server)
         end,
       },
