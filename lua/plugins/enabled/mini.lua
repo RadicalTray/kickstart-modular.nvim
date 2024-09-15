@@ -3,6 +3,7 @@ return {
   event = 'VimEnter',
   version = false,
   config = function()
+    require('mini.icons').setup {}
     -- require('mini.animate').setup {}
     require('mini.ai').setup {}
     require('mini.surround').setup {}
@@ -15,9 +16,7 @@ return {
       return vim.fn.pumvisible() and '<c-y><cr>' or '<cr>'
     end, { expr = true })
 
-    require('mini.icons').setup {}
     require('mini.git').setup {}
-
     vim.keymap.set('n', '<leader>gl', '<cmd>Git log<CR>', {
       desc = 'Open [G]it [L]og',
     })
@@ -49,7 +48,6 @@ return {
         signs = { add = '┃', change = '┃', delete = '_' },
       },
     }
-
     vim.keymap.set('n', '<leader>gh', MiniDiff.toggle_overlay, {
       desc = 'Toggle [G]it [H]unk overlay',
     })
