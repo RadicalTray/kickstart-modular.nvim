@@ -12,7 +12,7 @@ return {
       fallback_action = '<c-x><c-n>',
     }
     vim.keymap.set('i', '<cr>', function()
-      return vim.fn.pumvisible() and '<c-e><cr>' or '<cr>'
+      return vim.fn.pumvisible() and '<c-y><cr>' or '<cr>'
     end, { expr = true })
 
     require('mini.icons').setup {}
