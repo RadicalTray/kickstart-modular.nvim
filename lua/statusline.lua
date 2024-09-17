@@ -78,9 +78,14 @@ function Stl_reg_recording()
   return string.format('<rec "%s> ', reg)
 end
 
--- is this expensive?
+vim.g.stl_search_count = false
+-- is this expensive? -> yep i think espeically with long search
 -- waiting for https://github.com/neovim/neovim/issues/18879
 function Stl_search_count()
+  if vim.b.stl_search_count == nil and not vim.g.stl_search_count or vim.b.stl_search_count ~= nil and not vim.b.stl_search_count then
+    return ''
+  end
+
   local result = vim.fn.searchcount { recompute = 1 }
   local searchStr = vim.fn.getreg '/'
 
@@ -107,4 +112,5 @@ vim.api.nvim_set_hl(0, 'StlReg', { fg = 'purple', bold = true })
 
 -- %{} strips out leading spaces if it's in the middle (i think)
 -- See https://github.com/neovim/neovim/issues/28918
-return '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StlText#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '
+vim.o.statusline =
+  '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StlText#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '

@@ -18,7 +18,7 @@ vim.opt.showcmd = true
 vim.opt.showcmdloc = 'statusline'
 vim.opt.laststatus = 3
 vim.opt.cmdheight = 0
-vim.opt.statusline = require 'statusline'
+require 'statusline'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
