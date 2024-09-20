@@ -107,6 +107,7 @@ function Stl_search_count()
 end
 
 vim.api.nvim_set_hl(0, 'StlText', {})
+vim.api.nvim_set_hl(0, 'StlMode', { fg = 'green', bold = true })
 vim.api.nvim_set_hl(0, 'StlBranch', { fg = 'lightblue' })
 vim.api.nvim_set_hl(0, 'StlReg', { fg = 'purple', bold = true })
 
