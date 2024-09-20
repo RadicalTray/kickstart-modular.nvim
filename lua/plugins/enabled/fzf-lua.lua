@@ -13,7 +13,26 @@ return {
   },
   config = function()
     local fzf = require 'fzf-lua'
-    fzf.setup { fzf_colors = true, fzf_opts = { ['--cycle'] = true } }
+    local actions = require 'fzf-lua.actions'
+    fzf.setup {
+      winopts = {
+        border = 'none',
+        fullscreen = true,
+      },
+      actions = {
+        files = {
+          false,
+          ['enter'] = actions.file_edit_or_qf,
+          ['ctrl-s'] = actions.file_split,
+          ['ctrl-v'] = actions.file_vsplit,
+          ['ctrl-t'] = actions.file_tabedit,
+          ['ctrl-q'] = { fn = actions.file_sel_to_qf, prefix = 'select-all' },
+          -- ['ctrl-l'] = actions.file_sel_to_ll, -- what is this?
+        },
+      },
+      fzf_colors = true,
+      fzf_opts = { ['--cycle'] = true },
+    }
     vim.keymap.set('n', '<leader>sh', fzf.helptags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', fzf.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>sf', fzf.files, { desc = '[S]earch [F]iles' })
