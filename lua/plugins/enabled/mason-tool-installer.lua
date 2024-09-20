@@ -1,11 +1,10 @@
 return {
-  'williamboman/mason.nvim',
+  'WhoIsSethDaniel/mason-tool-installer.nvim',
+  event = 'VeryLazy',
   dependencies = {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    { 'williamboman/mason.nvim', opts = {} },
   },
   config = function()
-    require('mason').setup()
-
     local lsp = {
       'lua-language-server',
       'omnisharp',

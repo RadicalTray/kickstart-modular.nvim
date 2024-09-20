@@ -6,7 +6,7 @@ return {
     require('mini.icons').setup {}
     -- require('mini.animate').setup {}
     require('mini.ai').setup {}
-    require('mini.surround').setup {}
+    -- require('mini.surround').setup {}
 
     require('mini.completion').setup {
       -- delay = { completion = 0, info = 0, signature = 0 },

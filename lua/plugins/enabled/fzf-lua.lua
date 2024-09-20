@@ -1,7 +1,6 @@
 return {
   -- requires fzf, ofc
   'ibhagwan/fzf-lua',
-  event = 'VimEnter',
   dependencies = {
     'nvim-tree/nvim-web-devicons', -- optional
     -- optional external dependencies
@@ -10,6 +9,22 @@ return {
     -- bat - syntax highlighted previews when using fzf's native previewer
     -- delta - syntax highlighted git pager for git status previews
     -- nvim-dap - for Debug Adapter Protocol (DAP) support
+  },
+  cmd = 'FzfLua',
+  keys = {
+    { '<leader>sh', '<cmd>FzfLua helptags<cr>', desc = '[S]earch [H]elp' },
+    { '<leader>sk', '<cmd>FzfLua keymaps<cr>', desc = '[S]earch [K]eymaps' },
+    { '<leader>sf', '<cmd>FzfLua files<cr>', desc = '[S]earch [F]iles' },
+    { '<leader>ss', '<cmd>FzfLua builtin<cr>', desc = '[S]earch [S]elect Telescope' },
+    { '<leader>sv', '<cmd>FzfLua grep_visual<cr>', desc = '[S]earch [V]isual selection' },
+    { '<leader>sg', '<cmd>FzfLua live_grep<cr>', desc = '[S]earch by [G]rep' },
+    { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = '[S]earch [D]iagnostics in this document' },
+    { '<leader>sD', '<cmd>FzfLua diagnostics_workspace<cr>', desc = '[S]earch [D]iagnostics in this workspace' },
+    { '<leader>s.', '<cmd>FzfLua resume<cr>', desc = '[S]earch resume' },
+    { '<leader>sR', '<cmd>FzfLua registers<cr>', desc = '[S]earch [R]e[G]isters' },
+    { '<leader><leader>', '<cmd>FzfLua buffers<cr>', desc = '[ ] Find existing buffers' },
+    { '<leader>s/', '<cmd>FzfLua blines previewer=false<cr>', desc = '[S]earch in current buffer' },
+    { '<leader>sn', string.format('<cmd>FzfLua files cwd=%s<cr>', vim.fn.stdpath 'config'), desc = '[S]earch [N]eovim files' },
   },
   config = function()
     local fzf = require 'fzf-lua'
@@ -33,24 +48,6 @@ return {
       fzf_colors = true,
       fzf_opts = { ['--cycle'] = true },
     }
-    vim.keymap.set('n', '<leader>sh', fzf.helptags, { desc = '[S]earch [H]elp' })
-    vim.keymap.set('n', '<leader>sk', fzf.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader>sf', fzf.files, { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>ss', fzf.builtin, { desc = '[S]earch [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>sv', fzf.grep_visual, { desc = '[S]earch [V]isual selection' })
-    vim.keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>sd', fzf.diagnostics_document, { desc = '[S]earch [D]iagnostics in this document' })
-    vim.keymap.set('n', '<leader>sD', fzf.diagnostics_workspace, { desc = '[S]earch [D]iagnostics in this workspace' })
-    vim.keymap.set('n', '<leader>s.', fzf.resume, { desc = '[S]earch resume' })
-    vim.keymap.set('n', '<leader>sR', fzf.registers, { desc = '[S]earch [R]e[G]isters' })
-    vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>s/', function()
-      fzf.blines { previewer = false }
-    end, { desc = '[S]earch in current buffer' })
-
-    vim.keymap.set('n', '<leader>sn', function()
-      fzf.files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[S]earch [N]eovim files' })
   end,
 }
 -- vim: ts=2 sts=2 sw=2 et

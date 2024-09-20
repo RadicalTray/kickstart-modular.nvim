@@ -1,6 +1,6 @@
 return { ---@type LazySpec
   'mikavilpas/yazi.nvim',
-  event = 'VeryLazy',
+  cmd = 'Yazi',
   keys = {
     {
       '<leader>y.',

@@ -21,5 +21,5 @@ return {
   keys = {
     { '<leader>ng', '<cmd>Neogit<CR>', desc = 'Open [N]eo[G]it' },
   },
-  config = true,
+  opts = {},
 }

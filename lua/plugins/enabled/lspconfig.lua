@@ -1,6 +1,7 @@
 return {
   'williamboman/mason-lspconfig.nvim',
   -- enabled = false,
+  event = { 'BufReadPre', 'BufNewFile', 'FileType' },
   dependencies = {
     {
       'neovim/nvim-lspconfig',
@@ -52,6 +53,7 @@ return {
         })
       end,
     },
+    { 'williamboman/mason.nvim', opts = {} },
     { 'j-hui/fidget.nvim', opts = {} },
     { 'folke/neodev.nvim', opts = {} },
   },

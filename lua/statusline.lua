@@ -79,6 +79,11 @@ function Stl_reg_recording()
 end
 
 vim.g.stl_search_count = false
+vim.api.nvim_create_user_command('ToggleStlSearchCount', function()
+  vim.g.stl_search_count = not vim.g.stl_search_count
+end, {
+  desc = 'Toggle search count display on statusline',
+})
 -- is this expensive? -> yep i think espeically with long search
 -- waiting for https://github.com/neovim/neovim/issues/18879
 function Stl_search_count()
