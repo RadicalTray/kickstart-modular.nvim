@@ -1,7 +1,7 @@
 return {
   -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
+  build = '<cmd>TSUpdate',
   event = { 'BufReadPost', 'BufNewFile', 'FileType' },
   opts = {
     ensure_installed = {
