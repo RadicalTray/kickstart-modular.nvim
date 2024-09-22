@@ -2,7 +2,7 @@ return {
   -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  event = { 'BufReadPost', 'BufNewFile', 'FileType' },
+  event = 'FileType',
   opts = {
     ensure_installed = {
       'bash',

@@ -1,7 +1,7 @@
 return {
   'williamboman/mason-lspconfig.nvim',
   -- enabled = false,
-  event = { 'BufReadPre', 'BufNewFile', 'FileType' },
+  event = 'FileType',
   dependencies = {
     {
       'neovim/nvim-lspconfig',
