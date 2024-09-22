@@ -1,4 +1,4 @@
 return {
   'nvim-treesitter/nvim-treesitter-context',
-  event = 'FileType',
+  event = { 'BufReadPost', 'BufNewFile', 'FileType' },
 }
