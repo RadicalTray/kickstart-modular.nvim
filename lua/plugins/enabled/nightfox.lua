@@ -7,6 +7,7 @@ return {
         transparent = true,
       },
     }
-    vim.cmd.colorscheme 'carbonfox'
+    vim.cmd.colorscheme 'nightfox'
+    vim.api.nvim_set_hl(0, 'Visual', { fg = '#bebebe', bg = '#6085b6' })
   end,
 }
