@@ -1,0 +1,88 @@
+vim.cmd.colorscheme 'quiet'
+
+-- generated from Termcolors.nvim
+local black = '#000000'
+local red = '#d7005f'
+local green = '#00af5f'
+local yellow = '#d78700'
+local blue = '#0087d7'
+local magenta = '#d787d7'
+local cyan = '#00afaf'
+local white = '#dadada'
+local bright_black = '#707070'
+local bright_red = '#ff005f'
+local bright_green = '#00d75f'
+local bright_yellow = '#ffaf00'
+local bright_blue = '#5fafff'
+local bright_magenta = '#ff87ff'
+local bright_cyan = '#00d7d7'
+local bright_white = '#ffffff'
+
+local cterm_black = 0
+local cterm_red = 1
+local cterm_green = 2
+local cterm_yellow = 3
+local cterm_blue = 4
+local cterm_magenta = 5
+local cterm_cyan = 6
+local cterm_white = 7
+local cterm_bright_black = 8
+local cterm_bright_red = 9
+local cterm_bright_green = 10
+local cterm_bright_yellow = 11
+local cterm_bright_blue = 12
+local cterm_bright_magenta = 13
+local cterm_bright_cyan = 14
+local cterm_bright_white = 15
+
+vim.g.terminal_color_0 = black
+vim.g.terminal_color_1 = red
+vim.g.terminal_color_2 = green
+vim.g.terminal_color_3 = yellow
+vim.g.terminal_color_4 = blue
+vim.g.terminal_color_5 = magenta
+vim.g.terminal_color_6 = cyan
+vim.g.terminal_color_7 = white
+vim.g.terminal_color_8 = bright_black
+vim.g.terminal_color_9 = bright_red
+vim.g.terminal_color_10 = bright_green
+vim.g.terminal_color_11 = bright_yellow
+vim.g.terminal_color_12 = bright_blue
+vim.g.terminal_color_13 = bright_magenta
+vim.g.terminal_color_14 = bright_cyan
+vim.g.terminal_color_15 = bright_white
+
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = bright_black, bg = 'None', ctermfg = cterm_bright_black })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = white, bg = 'None', ctermfg = cterm_white })
+
+vim.api.nvim_set_hl(0, 'Normal', { fg = white, bg = 'None', ctermfg = cterm_white })
+
+vim.api.nvim_set_hl(0, 'Pmenu', { fg = white, bg = black, ctermfg = cterm_white, ctermbg = cterm_black })
+vim.api.nvim_set_hl(0, 'PmenuExtra', { bg = black, ctermbg = cterm_black })
+vim.api.nvim_set_hl(0, 'PmenuKind', { bg = black, ctermbg = cterm_black })
+vim.api.nvim_set_hl(0, 'PmenuMatch', { fg = red, bg = black, ctermfg = cterm_red, ctermbg = cterm_black })
+vim.api.nvim_set_hl(0, 'PmenuSel', { fg = bright_white, bg = bright_black, ctermfg = cterm_bright_white, ctermbg = cterm_bright_black })
+vim.api.nvim_set_hl(0, 'PmenuExtraSel', { bg = bright_black, ctermbg = cterm_bright_black })
+vim.api.nvim_set_hl(0, 'PmenuKindSel', { bg = bright_black, ctermbg = cterm_bright_black })
+vim.api.nvim_set_hl(0, 'PmenuMatchSel', { fg = bright_red, bg = bright_black, ctermfg = cterm_bright_red, ctermbg = cterm_bright_black })
+
+vim.api.nvim_set_hl(0, 'DiagnosticOk', { fg = green, ctermfg = cterm_green })
+vim.api.nvim_set_hl(0, 'DiagnosticHint', { fg = blue, ctermfg = cterm_blue })
+vim.api.nvim_set_hl(0, 'DiagnosticInfo', { fg = cyan, ctermfg = cterm_cyan })
+vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = yellow, ctermfg = cterm_yellow })
+vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = red, ctermfg = cterm_red })
+
+vim.api.nvim_set_hl(0, 'Statement', { bold = true, fg = white, ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Identifier', { fg = white, ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Function', { fg = bright_blue, ctermfg = cterm_bright_blue })
+vim.api.nvim_set_hl(0, 'String', { fg = green, ctermfg = cterm_green })
+vim.api.nvim_set_hl(0, 'Comment', { fg = bright_black, ctermfg = cterm_bright_black })
+
+vim.api.nvim_set_hl(0, 'DiffAdd', { fg = green, ctermfg = cterm_green })
+vim.api.nvim_set_hl(0, 'DiffText', { fg = cyan, ctermfg = cterm_cyan })
+vim.api.nvim_set_hl(0, 'DiffDelete', { fg = red, ctermfg = cterm_red })
+
+vim.api.nvim_set_hl(0, 'ErrorMsg', { fg = red, ctermfg = cterm_red })
+vim.api.nvim_set_hl(0, 'WarningMsg', { fg = yellow, ctermfg = cterm_yellow })
+
+vim.api.nvim_set_hl(0, 'FzfLuaFzfMatch', { fg = red, ctermfg = cterm_red })

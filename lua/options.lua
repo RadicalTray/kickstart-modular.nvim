@@ -2,6 +2,8 @@
 -- See `:help vim.opt`
 -- NOTE: For more options, you can see `:help option-list`
 
+require 'colorscheme'
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
