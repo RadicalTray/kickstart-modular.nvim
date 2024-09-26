@@ -74,15 +74,22 @@ vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = red, ctermfg = cterm_red })
 
 vim.api.nvim_set_hl(0, 'Statement', { bold = true, fg = white, ctermfg = cterm_white })
 vim.api.nvim_set_hl(0, 'Identifier', { fg = white, ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Function', { fg = bright_blue, ctermfg = cterm_bright_blue })
+vim.api.nvim_set_hl(0, 'Type', { bold = true, fg = bright_white, ctermfg = cterm_bright_white })
+vim.api.nvim_set_hl(0, 'Function', { bold = true, fg = bright_white, ctermfg = cterm_bright_white })
 vim.api.nvim_set_hl(0, 'String', { fg = green, ctermfg = cterm_green })
 vim.api.nvim_set_hl(0, 'Comment', { fg = bright_black, ctermfg = cterm_bright_black })
 
-vim.api.nvim_set_hl(0, 'DiffAdd', { fg = green, ctermfg = cterm_green })
-vim.api.nvim_set_hl(0, 'DiffText', { fg = cyan, ctermfg = cterm_cyan })
-vim.api.nvim_set_hl(0, 'DiffDelete', { fg = red, ctermfg = cterm_red })
+vim.api.nvim_set_hl(0, 'DiffAdd', { fg = black, ctermfg = cterm_black, bg = green, ctermbg = cterm_green })
+vim.api.nvim_set_hl(0, 'DiffText', { fg = black, ctermfg = cterm_black, bg = blue, ctermbg = cterm_blue })
+vim.api.nvim_set_hl(0, 'DiffChange', { fg = black, ctermfg = cterm_black, bg = bright_blue, ctermbg = cterm_bright_blue })
+vim.api.nvim_set_hl(0, 'DiffDelete', { fg = black, ctermfg = cterm_black, bg = red, ctermbg = cterm_red })
+vim.api.nvim_set_hl(0, 'Added', { fg = green, ctermfg = cterm_green })
+vim.api.nvim_set_hl(0, 'Changed', { fg = yellow, ctermfg = cterm_yellow })
+vim.api.nvim_set_hl(0, 'Deleted', { fg = red, ctermfg = cterm_red })
 
 vim.api.nvim_set_hl(0, 'ErrorMsg', { fg = red, ctermfg = cterm_red })
 vim.api.nvim_set_hl(0, 'WarningMsg', { fg = yellow, ctermfg = cterm_yellow })
 
-vim.api.nvim_set_hl(0, 'FzfLuaFzfMatch', { fg = red, ctermfg = cterm_red })
+vim.api.nvim_set_hl(0, 'Todo', { fg = green, ctermfg = cterm_green })
+
+vim.api.nvim_set_hl(0, 'FzfLuaFzfMatch', { link = 'PmenuMatch' })
