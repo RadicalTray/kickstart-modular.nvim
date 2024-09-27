@@ -1,3 +1,5 @@
+vim.cmd.hi 'clear'
+
 local black             = '#000000'
 local red               = '#d7005f'
 local green             = '#00af5f'
