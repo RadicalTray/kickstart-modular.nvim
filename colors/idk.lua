@@ -55,7 +55,7 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = white, bg = 'None', ctermfg = cter
 
 vim.api.nvim_set_hl(0, 'Normal',      { fg = white, ctermfg = cterm_white, bg = 'None' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { fg = white, ctermfg = cterm_white, bg = black,         ctermbg = cterm_black })
-vim.api.nvim_set_hl(0, 'Visual',      { fg = white, ctermfg = cterm_white, bg = bright_black,  ctermbg = cterm_bright_black })
+vim.api.nvim_set_hl(0, 'Visual',      { fg = black, ctermfg = cterm_black, bg = yellow,        ctermbg = cterm_yellow })
 vim.api.nvim_set_hl(0, 'Search',      { fg = black, ctermfg = cterm_black, bg = bright_yellow, ctermbg = cterm_bright_yellow })
 vim.api.nvim_set_hl(0, 'CurSearch',   { fg = black, ctermfg = cterm_black, bg = yellow,        ctermbg = cterm_yellow })
 
