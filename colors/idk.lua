@@ -1,6 +1,6 @@
-vim.cmd.colorscheme 'quiet'
+-- vim.cmd.colorscheme 'quiet'
 
--- generated from Termcolors.nvim
+-- generated from quiet colorscheme with Termcolors.nvim
 local black             = '#000000'
 local red               = '#d7005f'
 local green             = '#00af5f'
@@ -72,6 +72,9 @@ vim.api.nvim_set_hl(0, 'DiagnosticInfo',  { fg = cyan, ctermfg = cterm_cyan })
 vim.api.nvim_set_hl(0, 'DiagnosticWarn',  { fg = yellow, ctermfg = cterm_yellow })
 vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = red, ctermfg = cterm_red })
 
+vim.api.nvim_set_hl(0, 'Title',      { fg = white, ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Delimiter',  { fg = white, ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Special',    { fg = white, ctermfg = cterm_white })
 vim.api.nvim_set_hl(0, 'Statement',  { fg = white, ctermfg = cterm_white })
 vim.api.nvim_set_hl(0, 'Identifier', { fg = white, ctermfg = cterm_white })
 vim.api.nvim_set_hl(0, 'Type',       { fg = white, ctermfg = cterm_white })

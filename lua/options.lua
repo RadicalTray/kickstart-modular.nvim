@@ -2,7 +2,7 @@
 -- See `:help vim.opt`
 -- NOTE: For more options, you can see `:help option-list`
 
-require 'colorscheme'
+vim.cmd.colorscheme 'idk'
 
 vim.opt.number = true
 vim.opt.relativenumber = true
