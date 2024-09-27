@@ -9,7 +9,7 @@ local blue = '#0087d7'
 local magenta = '#d787d7'
 local cyan = '#00afaf'
 local white = '#dadada'
-local bright_black = '#707070'
+local bright_black = '#404040'
 local bright_red = '#ff005f'
 local bright_green = '#00d75f'
 local bright_yellow = '#ffaf00'
@@ -79,13 +79,13 @@ vim.api.nvim_set_hl(0, 'Function', { bold = true, fg = bright_white, ctermfg = c
 vim.api.nvim_set_hl(0, 'String', { fg = green, ctermfg = cterm_green })
 vim.api.nvim_set_hl(0, 'Comment', { fg = bright_black, ctermfg = cterm_bright_black })
 
-vim.api.nvim_set_hl(0, 'DiffAdd', { fg = black, ctermfg = cterm_black, bg = green, ctermbg = cterm_green })
-vim.api.nvim_set_hl(0, 'DiffChange', { fg = black, ctermfg = cterm_black, bg = yellow, ctermbg = cterm_yellow })
-vim.api.nvim_set_hl(0, 'DiffText', { fg = black, ctermfg = cterm_black, bg = bright_yellow, ctermbg = cterm_bright_yellow })
-vim.api.nvim_set_hl(0, 'DiffDelete', { fg = black, ctermfg = cterm_black, bg = red, ctermbg = cterm_red })
-vim.api.nvim_set_hl(0, 'Added', { fg = green, ctermfg = cterm_green })
-vim.api.nvim_set_hl(0, 'Changed', { fg = yellow, ctermfg = cterm_yellow })
-vim.api.nvim_set_hl(0, 'Deleted', { fg = red, ctermfg = cterm_red })
+vim.api.nvim_set_hl(0, 'DiffAdd', { fg = black, ctermfg = cterm_black, bg = bright_green, ctermbg = cterm_bright_green })
+vim.api.nvim_set_hl(0, 'DiffChange', { fg = black, ctermfg = cterm_black, bg = bright_yellow, ctermbg = cterm_bright_yellow })
+vim.api.nvim_set_hl(0, 'DiffText', { fg = black, ctermfg = cterm_black, bg = yellow, ctermbg = cterm_yellow })
+vim.api.nvim_set_hl(0, 'DiffDelete', { fg = black, ctermfg = cterm_black, bg = bright_red, ctermbg = cterm_bright_red })
+vim.api.nvim_set_hl(0, 'Added', { fg = bright_green, ctermfg = cterm_bright_green })
+vim.api.nvim_set_hl(0, 'Changed', { fg = bright_yellow, ctermfg = cterm_bright_yellow })
+vim.api.nvim_set_hl(0, 'Deleted', { fg = bright_red, ctermfg = cterm_bright_red })
 
 vim.api.nvim_set_hl(0, 'ErrorMsg', { fg = red, ctermfg = cterm_red })
 vim.api.nvim_set_hl(0, 'WarningMsg', { fg = yellow, ctermfg = cterm_yellow })
