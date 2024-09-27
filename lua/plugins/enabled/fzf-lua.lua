@@ -2,7 +2,7 @@ return {
   -- requires fzf, ofc
   'ibhagwan/fzf-lua',
   dependencies = {
-    'nvim-tree/nvim-web-devicons', -- optional
+    -- 'nvim-tree/nvim-web-devicons', -- optional
     -- optional external dependencies
     -- fd - better find utility
     -- rg - better grep utility
