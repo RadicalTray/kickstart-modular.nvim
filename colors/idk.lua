@@ -54,7 +54,7 @@ vim.g.terminal_color_15 = bright_white
 
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = bright_black, ctermfg = cterm_bright_black, bg = 'None' })
 vim.api.nvim_set_hl(0, 'CursorLine',   { bg = black, ctermbg = cterm_black })
-vim.api.nvim_set_hl(0, 'LineNr',       { fg = bright_black, ctermfg = cterm_bright_black, bg = 'None' })
+vim.api.nvim_set_hl(0, 'LineNr',       { fg = white,        ctermfg = cterm_white,        bg = 'None' })
 vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = white,        ctermfg = cterm_white,        bg = 'None' })
 
 vim.api.nvim_set_hl(0, 'Normal',      { fg = white, ctermfg = cterm_white, bg = 'None' })
@@ -72,11 +72,12 @@ vim.api.nvim_set_hl(0, 'PmenuExtraSel', {                                    bg 
 vim.api.nvim_set_hl(0, 'PmenuKindSel',  {                                    bg = bright_black, ctermbg = cterm_bright_black, bold = true })
 vim.api.nvim_set_hl(0, 'PmenuMatchSel', { fg = red,   ctermfg = cterm_red,   bg = bright_black, ctermbg = cterm_bright_black, bold = true })
 
-vim.api.nvim_set_hl(0, 'DiagnosticOk',    { fg = green, ctermfg = cterm_green })
-vim.api.nvim_set_hl(0, 'DiagnosticHint',  { fg = blue, ctermfg = cterm_blue })
-vim.api.nvim_set_hl(0, 'DiagnosticInfo',  { fg = cyan, ctermfg = cterm_cyan })
-vim.api.nvim_set_hl(0, 'DiagnosticWarn',  { fg = yellow, ctermfg = cterm_yellow })
-vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = red, ctermfg = cterm_red })
+vim.api.nvim_set_hl(0, 'DiagnosticOk',          { fg = green,        ctermfg = cterm_green })
+vim.api.nvim_set_hl(0, 'DiagnosticInfo',        { fg = blue,         ctermfg = cterm_blue })
+vim.api.nvim_set_hl(0, 'DiagnosticHint',        { fg = cyan,         ctermfg = cterm_cyan })
+vim.api.nvim_set_hl(0, 'DiagnosticWarn',        { fg = yellow,       ctermfg = cterm_yellow })
+vim.api.nvim_set_hl(0, 'DiagnosticError',       { fg = red,          ctermfg = cterm_red })
+vim.api.nvim_set_hl(0, 'DiagnosticUnnecessary', { fg = bright_black, ctermfg = cterm_bright_black })
 
 vim.api.nvim_set_hl(0, '@variable', { fg = white, ctermfg = cterm_white })
 
@@ -109,3 +110,4 @@ vim.api.nvim_set_hl(0, 'Todo', { fg = green, ctermfg = cterm_green })
 vim.api.nvim_set_hl(0, 'FzfLuaFzfMatch',   { link = 'PmenuMatch' })
 vim.api.nvim_set_hl(0, 'FzfLuaCursorLine', { link = 'PmenuSel' }) -- The bold setting is not in effect here.
                                                                   -- At least turning it off.
+-- vim: nowrap
