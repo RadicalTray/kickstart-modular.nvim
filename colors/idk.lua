@@ -5,7 +5,7 @@ local red               = '#d7005f'
 local green             = '#00af5f'
 local yellow            = '#fbb806'
 local blue              = '#0087d7'
-local magenta           = '#d787d7'
+local magenta           = '#f400a1'
 local cyan              = '#00afaf'
 local white             = '#dadada'
 
@@ -14,7 +14,7 @@ local bright_red        = '#ff005f'
 local bright_green      = '#00d75f'
 local bright_yellow     = '#ffee00'
 local bright_blue       = '#5fafff'
-local bright_magenta    = '#ff87ff'
+local bright_magenta    = '#ff08e8'
 local bright_cyan       = '#00d7d7'
 local bright_white      = '#ffffff'
 
@@ -53,6 +53,7 @@ vim.g.terminal_color_14 = bright_cyan
 vim.g.terminal_color_15 = bright_white
 
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = bright_black, ctermfg = cterm_bright_black, bg = 'None' })
+vim.api.nvim_set_hl(0, 'CursorLine',   { bg = black, ctermbg = cterm_black })
 vim.api.nvim_set_hl(0, 'LineNr',       { fg = bright_black, ctermfg = cterm_bright_black, bg = 'None' })
 vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = white,        ctermfg = cterm_white,        bg = 'None' })
 
@@ -67,9 +68,9 @@ vim.api.nvim_set_hl(0, 'PmenuExtra',    { bg = black, ctermbg = cterm_black })
 vim.api.nvim_set_hl(0, 'PmenuKind',     { bg = black, ctermbg = cterm_black })
 vim.api.nvim_set_hl(0, 'PmenuMatch',    { fg = red,   ctermfg = cterm_red,   bg = black,        ctermbg = cterm_black })
 vim.api.nvim_set_hl(0, 'PmenuSel',      { fg = white, ctermfg = cterm_white, bg = bright_black, ctermbg = cterm_bright_black, bold = true })
-vim.api.nvim_set_hl(0, 'PmenuExtraSel', { bg = bright_black, ctermbg = cterm_bright_black })
-vim.api.nvim_set_hl(0, 'PmenuKindSel',  { bg = bright_black, ctermbg = cterm_bright_black })
-vim.api.nvim_set_hl(0, 'PmenuMatchSel', { fg = red, ctermfg = cterm_red, bg = bright_black, ctermbg = cterm_bright_black, bold = true })
+vim.api.nvim_set_hl(0, 'PmenuExtraSel', {                                    bg = bright_black, ctermbg = cterm_bright_black, bold = true })
+vim.api.nvim_set_hl(0, 'PmenuKindSel',  {                                    bg = bright_black, ctermbg = cterm_bright_black, bold = true })
+vim.api.nvim_set_hl(0, 'PmenuMatchSel', { fg = red,   ctermfg = cterm_red,   bg = bright_black, ctermbg = cterm_bright_black, bold = true })
 
 vim.api.nvim_set_hl(0, 'DiagnosticOk',    { fg = green, ctermfg = cterm_green })
 vim.api.nvim_set_hl(0, 'DiagnosticHint',  { fg = blue, ctermfg = cterm_blue })
@@ -90,7 +91,7 @@ vim.api.nvim_set_hl(0, 'Constant',   { fg = white,        ctermfg = cterm_white 
 vim.api.nvim_set_hl(0, 'Type',       { fg = white,        ctermfg = cterm_white })
 vim.api.nvim_set_hl(0, 'Function',   { fg = white,        ctermfg = cterm_white })
 vim.api.nvim_set_hl(0, 'String',     { fg = magenta,      ctermfg = cterm_magenta })
-vim.api.nvim_set_hl(0, 'Comment',    { fg = bright_black, ctermfg = cterm_bright_black })
+vim.api.nvim_set_hl(0, 'Comment',    { fg = white,        ctermfg = cterm_white })
 
 vim.api.nvim_set_hl(0, 'DiffAdd',    { fg = black, ctermfg = cterm_black, bg = bright_green, ctermbg = cterm_bright_green })
 vim.api.nvim_set_hl(0, 'DiffChange', { fg = black, ctermfg = cterm_black, bg = bright_yellow, ctermbg = cterm_bright_yellow })
@@ -105,4 +106,6 @@ vim.api.nvim_set_hl(0, 'WarningMsg', { fg = yellow, ctermfg = cterm_yellow })
 
 vim.api.nvim_set_hl(0, 'Todo', { fg = green, ctermfg = cterm_green })
 
-vim.api.nvim_set_hl(0, 'FzfLuaFzfMatch', { link = 'PmenuMatch' })
+vim.api.nvim_set_hl(0, 'FzfLuaFzfMatch',   { link = 'PmenuMatch' })
+vim.api.nvim_set_hl(0, 'FzfLuaCursorLine', { link = 'PmenuSel' }) -- The bold setting is not in effect here.
+                                                                  -- At least turning it off.
