@@ -9,7 +9,7 @@ local magenta           = '#d787d7'
 local cyan              = '#00afaf'
 local white             = '#dadada'
 
-local bright_black      = '#404040'
+local bright_black      = '#202020'
 local bright_red        = '#ff005f'
 local bright_green      = '#00d75f'
 local bright_yellow     = '#ffee00'
@@ -52,14 +52,15 @@ vim.g.terminal_color_13 = bright_magenta
 vim.g.terminal_color_14 = bright_cyan
 vim.g.terminal_color_15 = bright_white
 
-vim.api.nvim_set_hl(0, 'WinSeparator', { fg = bright_black, bg = 'None', ctermfg = cterm_bright_black })
-vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = white, bg = 'None', ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = bright_black, ctermfg = cterm_bright_black, bg = 'None' })
+vim.api.nvim_set_hl(0, 'LineNr',       { fg = bright_black, ctermfg = cterm_bright_black, bg = 'None' })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = white,        ctermfg = cterm_white,        bg = 'None' })
 
 vim.api.nvim_set_hl(0, 'Normal',      { fg = white, ctermfg = cterm_white, bg = 'None' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { fg = white, ctermfg = cterm_white, bg = black,         ctermbg = cterm_black })
-vim.api.nvim_set_hl(0, 'Visual',      { fg = black, ctermfg = cterm_black, bg = yellow,        ctermbg = cterm_yellow })
-vim.api.nvim_set_hl(0, 'Search',      { fg = black, ctermfg = cterm_black, bg = bright_yellow, ctermbg = cterm_bright_yellow })
-vim.api.nvim_set_hl(0, 'CurSearch',   { fg = black, ctermfg = cterm_black, bg = yellow,        ctermbg = cterm_yellow })
+vim.api.nvim_set_hl(0, 'NormalFloat', { fg = white, ctermfg = cterm_white, bg = black,  ctermbg = cterm_black })
+vim.api.nvim_set_hl(0, 'Visual',      { fg = black, ctermfg = cterm_black, bg = yellow, ctermbg = cterm_yellow })
+vim.api.nvim_set_hl(0, 'Search',      { fg = red,   ctermfg = cterm_red,   bg = black,  ctermbg = cterm_black })
+vim.api.nvim_set_hl(0, 'CurSearch',   { fg = black, ctermfg = cterm_black, bg = red,    ctermbg = cterm_red })
 
 vim.api.nvim_set_hl(0, 'Pmenu',         { fg = white, ctermfg = cterm_white, bg = black, ctermbg = cterm_black })
 vim.api.nvim_set_hl(0, 'PmenuExtra',    { bg = black, ctermbg = cterm_black })
@@ -78,18 +79,18 @@ vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = red, ctermfg = cterm_red })
 
 vim.api.nvim_set_hl(0, '@variable', { fg = white, ctermfg = cterm_white })
 
-vim.api.nvim_set_hl(0, 'Title',      { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Delimiter',  { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'MatchParen', { fg = bright_magenta, ctermfg = cterm_bright_magenta })
-vim.api.nvim_set_hl(0, 'Operator',   { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Special',    { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Statement',  { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Identifier', { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Constant',   { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Type',       { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'Function',   { fg = white,          ctermfg = cterm_white })
-vim.api.nvim_set_hl(0, 'String',     { fg = red,            ctermfg = cterm_red })
-vim.api.nvim_set_hl(0, 'Comment',    { fg = bright_black,   ctermfg = cterm_bright_black })
+vim.api.nvim_set_hl(0, 'Title',      { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Delimiter',  { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'MatchParen', { fg = red,          ctermfg = cterm_red })
+vim.api.nvim_set_hl(0, 'Operator',   { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Special',    { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Statement',  { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Identifier', { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Constant',   { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Type',       { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'Function',   { fg = white,        ctermfg = cterm_white })
+vim.api.nvim_set_hl(0, 'String',     { fg = magenta,      ctermfg = cterm_magenta })
+vim.api.nvim_set_hl(0, 'Comment',    { fg = bright_black, ctermfg = cterm_bright_black })
 
 vim.api.nvim_set_hl(0, 'DiffAdd',    { fg = black, ctermfg = cterm_black, bg = bright_green, ctermbg = cterm_bright_green })
 vim.api.nvim_set_hl(0, 'DiffChange', { fg = black, ctermfg = cterm_black, bg = bright_yellow, ctermbg = cterm_bright_yellow })
