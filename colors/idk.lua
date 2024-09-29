@@ -110,4 +110,11 @@ vim.api.nvim_set_hl(0, 'Todo', { fg = green, ctermfg = cterm_green })
 vim.api.nvim_set_hl(0, 'FzfLuaFzfMatch',   { link = 'PmenuMatch' })
 vim.api.nvim_set_hl(0, 'FzfLuaCursorLine', { link = 'PmenuSel' }) -- The bold setting is not in effect here.
                                                                   -- At least turning it off.
+
+-- custom statusline hl
+vim.api.nvim_set_hl(0, 'StlText',   { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'StlMode',   { fg = green,       ctermfg = cterm_green,   bold = true })
+vim.api.nvim_set_hl(0, 'StlBranch', { fg = bright_blue, ctermfg = cterm_bright_blue })
+vim.api.nvim_set_hl(0, 'StlReg',    { fg = magenta,     ctermfg = cterm_magenta, bold = true })
+
 -- vim: nowrap

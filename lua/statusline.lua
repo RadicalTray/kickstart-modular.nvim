@@ -27,21 +27,43 @@
 --   ['t'] = 'TERMINAL',
 -- }
 
+local cterm_black           = 0
+local cterm_red             = 1
+local cterm_green           = 2
+local cterm_yellow          = 3
+local cterm_blue            = 4
+local cterm_magenta         = 5
+local cterm_cyan            = 6
+local cterm_white           = 7
+local cterm_bright_black    = 8
+local cterm_bright_red      = 9
+local cterm_bright_green    = 10
+local cterm_bright_yellow   = 11
+local cterm_bright_blue     = 12
+local cterm_bright_magenta  = 13
+local cterm_bright_cyan     = 14
+local cterm_bright_white    = 15
+
 function Stl_mode()
   local m = vim.api.nvim_get_mode().mode
-  local fg
+  local fg, ctermfg
   if m == 'n' or m == 'no' then
     fg = vim.g.terminal_color_2 or 'lightgreen'
+    ctermfg = cterm_green
   elseif m == 'i' or m == 'ic' then
     fg = vim.g.terminal_color_11 or 'lightyellow'
+    ctermfg = cterm_yellow
   elseif m == 'v' or m == 'V' or m == '' then
     fg = vim.g.terminal_color_13 or 'lightmagenta'
+    ctermfg = cterm_bright_magenta
   elseif m == 'R' or m == 'Rv' then
     fg = vim.g.terminal_color_9 or 'lightred'
+    ctermfg = cterm_bright_red
   else
     fg = vim.g.terminal_color_14 or 'lightcyan'
+    ctermfg = cterm_bright_cyan
   end
-  vim.api.nvim_set_hl(0, 'StlMode', { fg = fg, bold = true })
+  vim.api.nvim_set_hl(0, 'StlMode', { fg = fg, ctermfg = ctermfg, bold = true })
   return string.format('[%s] ', m or '???')
 end
 
@@ -110,11 +132,6 @@ function Stl_search_count()
 
   return string.format('/%s [%d/%d] ', searchStr, result.current, result.total)
 end
-
-vim.api.nvim_set_hl(0, 'StlText', {})
-vim.api.nvim_set_hl(0, 'StlMode', { fg = vim.g.terminal_color_2 or 'lightgreen', bold = true })
-vim.api.nvim_set_hl(0, 'StlBranch', { fg = vim.g.terminal_color_12 or 'lightblue' })
-vim.api.nvim_set_hl(0, 'StlReg', { fg = vim.g.terminal_color_5 or 'purple', bold = true })
 
 -- %{} strips out leading spaces if it's in the middle (i think)
 -- See https://github.com/neovim/neovim/issues/28918
