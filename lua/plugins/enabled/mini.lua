@@ -5,7 +5,7 @@ return {
   config = function()
     require('mini.icons').setup {}
     -- require('mini.animate').setup {}
-    require('mini.ai').setup {}
+    -- require('mini.ai').setup {}
     -- require('mini.surround').setup {}
 
     require('mini.completion').setup {
