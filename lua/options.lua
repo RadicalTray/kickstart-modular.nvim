@@ -71,8 +71,8 @@ vim.opt.scrolloff = 15
 -- Disable all default neovim cursor styling (should follow terminal's cursor now)
 vim.opt.guicursor = ''
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = -1
 vim.opt.expandtab = true
 vim.opt.showbreak = '↳'
 
