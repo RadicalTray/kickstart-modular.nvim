@@ -117,4 +117,6 @@ vim.api.nvim_set_hl(0, 'StlMode',   { fg = green,       ctermfg = cterm_green,  
 vim.api.nvim_set_hl(0, 'StlBranch', { fg = bright_blue, ctermfg = cterm_bright_blue })
 vim.api.nvim_set_hl(0, 'StlReg',    { fg = magenta,     ctermfg = cterm_magenta, bold = true })
 
+vim.api.nvim_set_hl(0, 'TreesitterContext', { fg = white,   ctermfg = cterm_white,   bg = bright_black,   ctermbg = cterm_bright_black })
+
 -- vim: nowrap
