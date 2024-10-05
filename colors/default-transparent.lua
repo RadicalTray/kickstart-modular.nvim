@@ -28,7 +28,7 @@ vim.g.terminal_color_22 = 'NvimDarkCyan'
 vim.g.terminal_color_23 = 'NvimLightGrey3'
 
 vim.api.nvim_set_hl(0, 'Normal', { fg = 'NvimLightGrey2', bg = 'None' })
-vim.api.nvim_set_hl(0, 'Visual', { fg = 'fg',             bg = 'NvimDarkGrey4', ctermfg = 7, ctermbg = 0 })
+vim.api.nvim_set_hl(0, 'Visual', { fg = 'NvimLightGrey2', bg = 'NvimDarkGrey4', ctermfg = 0, ctermbg = 15 })
 
 vim.api.nvim_set_hl(0, 'StlText',   { link = 'Normal' })
 vim.api.nvim_set_hl(0, 'StlMode',   { fg = 'NvimLightGreen', bold = true })
