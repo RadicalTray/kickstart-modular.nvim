@@ -27,41 +27,24 @@
 --   ['t'] = 'TERMINAL',
 -- }
 
-local cterm_black           = 0
-local cterm_red             = 1
-local cterm_green           = 2
-local cterm_yellow          = 3
-local cterm_blue            = 4
-local cterm_magenta         = 5
-local cterm_cyan            = 6
-local cterm_white           = 7
-local cterm_bright_black    = 8
-local cterm_bright_red      = 9
-local cterm_bright_green    = 10
-local cterm_bright_yellow   = 11
-local cterm_bright_blue     = 12
-local cterm_bright_magenta  = 13
-local cterm_bright_cyan     = 14
-local cterm_bright_white    = 15
-
 function Stl_mode()
   local m = vim.api.nvim_get_mode().mode
   local fg, ctermfg
   if m == 'n' or m == 'no' then
     fg = vim.g.terminal_color_2 or 'lightgreen'
-    ctermfg = cterm_bright_green
+    ctermfg = 2
   elseif m == 'i' or m == 'ic' then
     fg = vim.g.terminal_color_3 or 'lightyellow'
-    ctermfg = cterm_bright_yellow
+    ctermfg = 3
   elseif m == 'v' or m == 'V' or m == '' then
     fg = vim.g.terminal_color_5 or 'lightmagenta'
-    ctermfg = cterm_bright_magenta
+    ctermfg = 5
   elseif m == 'R' or m == 'Rv' then
     fg = vim.g.terminal_color_1 or 'lightred'
-    ctermfg = cterm_bright_red
+    ctermfg = 1
   else
     fg = vim.g.terminal_color_6 or 'lightcyan'
-    ctermfg = cterm_bright_cyan
+    ctermfg = 6
   end
   vim.api.nvim_set_hl(0, 'StlMode', { fg = fg, ctermfg = ctermfg, bold = true })
   return string.format('[%s] ', m or '???')
