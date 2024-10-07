@@ -32,19 +32,19 @@ function Stl_mode()
   local fg, ctermfg
   if m == 'n' or m == 'no' then
     fg = vim.g.terminal_color_2 or 'lightgreen'
-    ctermfg = 2
+    ctermfg = 10
   elseif m == 'i' or m == 'ic' then
     fg = vim.g.terminal_color_3 or 'lightyellow'
-    ctermfg = 3
+    ctermfg = 11
   elseif m == 'v' or m == 'V' or m == '' then
     fg = vim.g.terminal_color_5 or 'lightmagenta'
-    ctermfg = 5
+    ctermfg = 13
   elseif m == 'R' or m == 'Rv' then
     fg = vim.g.terminal_color_1 or 'lightred'
-    ctermfg = 1
+    ctermfg = 9
   else
     fg = vim.g.terminal_color_6 or 'lightcyan'
-    ctermfg = 6
+    ctermfg = 14
   end
   vim.api.nvim_set_hl(0, 'StlMode', { fg = fg, ctermfg = ctermfg, bold = true })
   return string.format('[%s] ', m or '???')
