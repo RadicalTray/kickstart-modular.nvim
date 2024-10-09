@@ -21,6 +21,9 @@ return {
       snippet_forward = '<c-l>',
       snippet_backward = '<c-h>',
     },
+    fuzzy = {
+      use_frecency = false,
+    },
     highlight = {
       -- sets the fallback highlight groups to nvim-cmp's highlight groups
       -- useful for when your theme doesn't support blink.cmp
@@ -37,13 +40,15 @@ return {
     -- experimental signature help support
     -- trigger = { signature_help = { enabled = true } }
 
-    providers = {
-      {
-        -- { 'blink.cmp.sources.lsp' },
-        { 'blink.cmp.sources.path' },
-        -- { 'blink.cmp.sources.snippets', score_offset = -3 },
+    sources = {
+      providers = {
+        {
+          -- { 'blink.cmp.sources.lsp' },
+          { 'blink.cmp.sources.path' },
+          -- { 'blink.cmp.sources.snippets', score_offset = -3 },
+        },
+        { { 'blink.cmp.sources.buffer' } },
       },
-      { { 'blink.cmp.sources.buffer' } },
     },
   }
 }
