@@ -8,18 +8,18 @@ return {
     -- require('mini.ai').setup {}
     -- require('mini.surround').setup {}
 
-    require('mini.completion').setup {
-      -- delay = { completion = 0, info = 0, signature = 0 },
-      lsp_completion = {
-        source_func = 'omnifunc',
-        auto_setup = false,
-        ---@diagnostic disable-next-line: unused-local
-        -- process_items = function(items, base)
-        --   return {}
-        -- end,
-      },
-      fallback_action = '<c-x><c-n>',
-    }
+    -- require('mini.completion').setup {
+    --   -- delay = { completion = 0, info = 0, signature = 0 },
+    --   lsp_completion = {
+    --     source_func = 'omnifunc',
+    --     auto_setup = false,
+    --     ---@diagnostic disable-next-line: unused-local
+    --     -- process_items = function(items, base)
+    --     --   return {}
+    --     -- end,
+    --   },
+    --   fallback_action = '<c-x><c-n>',
+    -- }
     vim.keymap.set('i', '<cr>', function()
       return vim.fn.pumvisible() ~= 0 and '<c-y><cr>' or '<cr>'
     end, { expr = true })
