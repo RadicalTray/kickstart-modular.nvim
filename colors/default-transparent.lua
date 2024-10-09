@@ -34,3 +34,5 @@ vim.api.nvim_set_hl(0, 'StlText',   { fg = 'fg' })
 vim.api.nvim_set_hl(0, 'StlMode',   { fg = 'NvimLightGreen', bold = true, ctermfg = 10 })
 vim.api.nvim_set_hl(0, 'StlBranch', { fg = 'NvimLightBlue', ctermfg = 12 })
 vim.api.nvim_set_hl(0, 'StlReg',    { fg = 'NvimLightMagenta', bold = true, ctermfg = 13 })
+
+vim.api.nvim_set_hl(0, 'DiffDelete', { fg = 'NvimLightGrey1', bg = 'NvimDarkRed', ctermfg = 0, ctermbg = 9 })
