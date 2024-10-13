@@ -119,4 +119,4 @@ end
 -- %{} strips out leading spaces if it's in the middle (i think)
 -- See https://github.com/neovim/neovim/issues/28918
 vim.o.statusline =
-  '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StlText#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StlText#%l:%c %-4.(%p%%%) %L Lines '
+  '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StatusLine#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#%l:%c %-4.(%p%%%) %L Lines '
