@@ -1,6 +1,11 @@
 return {
   'NvChad/nvim-colorizer.lua',
-  event = { 'BufReadPost', 'BufNewFile' },
+  cmd = {
+    'ColorizerAttachToBuffer',
+    'ColorizerDetachFromBuffer',
+    'ColorizerReloadAllBuffers',
+    'ColorizerToggle',
+  },
   opts = {
     user_default_options = { names = false },
   },
