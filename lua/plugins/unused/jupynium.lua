@@ -1,6 +1,5 @@
 return {
   "kiyoon/jupynium.nvim",
-  -- enabled = false,
   ft = 'python',
   -- dependencies = {
   --   -- "rcarriga/nvim-notify", -- optional
