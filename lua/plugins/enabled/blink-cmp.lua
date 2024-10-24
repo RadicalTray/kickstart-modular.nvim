@@ -29,7 +29,7 @@ return {
     },
     nerd_font_variant = 'mono',
     sources = {
-      completion = { 
+      completion = {
         enabled_providers = { 'path', 'buffer' },
       },
     },
