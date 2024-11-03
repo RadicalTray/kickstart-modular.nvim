@@ -21,15 +21,9 @@ return {
     highlight = {
       use_nvim_cmp_as_default = true,
     },
-    nerd_font_variant = 'mono',
     sources = {
       completion = {
         enabled_providers = { 'path', 'buffer' },
-      },
-      providers = {
-        buffer = {
-          fallback_for = {},
-        },
       },
     },
   },
