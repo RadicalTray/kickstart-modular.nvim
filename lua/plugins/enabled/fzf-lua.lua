@@ -14,7 +14,6 @@ return {
   keys = {
     { '<leader>sh', '<cmd>FzfLua helptags<cr>', desc = '[S]earch [H]elp' },
     { '<leader>sk', '<cmd>FzfLua keymaps<cr>', desc = '[S]earch [K]eymaps' },
-    { '<leader>sf', '<cmd>FzfLua files<cr>', desc = '[S]earch [F]iles' },
     { '<leader>sb', '<cmd>FzfLua buffers<cr>', desc = '[S]earch [B]uffers' },
     { '<leader>sB', '<cmd>FzfLua builtin<cr>', desc = '[S]earch FzfLua [B]uiltin' },
     { '<leader>sg', '<cmd>FzfLua live_grep<cr>', desc = '[S]earch by [G]rep' },
