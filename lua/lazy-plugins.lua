@@ -1,7 +1,7 @@
 -- [[ Configure and install plugins ]]
 require('lazy').setup {
   spec = {
-    { import = 'plugins.enabled' },
+    { import = 'plugins.import' },
   },
   install = {
     colorscheme = { 'default-transparent' },
