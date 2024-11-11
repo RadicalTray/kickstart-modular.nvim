@@ -2,18 +2,7 @@ return {
   'NeogitOrg/neogit',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    {
-      'sindrets/diffview.nvim',
-      cmd = {
-        'DiffviewOpen',
-        'DiffviewClose',
-        'DiffviewLog',
-        'DiffviewFileHistory',
-        'DiffviewFocusFiles',
-        'DiffviewToggleFiles',
-        'DiffviewRefresh',
-      },
-    },
+    'sindrets/diffview.nvim',
     -- 'nvim-telescope/telescope.nvim',
     'ibhagwan/fzf-lua',
   },
