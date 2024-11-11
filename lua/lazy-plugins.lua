@@ -1,4 +1,6 @@
--- [[ Configure and install plugins ]]
+Plugin_enable_LSP = false
+Plugin_enable_format = false
+
 require('lazy').setup {
   spec = {
     { import = 'plugins.import' },

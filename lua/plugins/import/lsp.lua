@@ -1,9 +1,7 @@
-local enabled = false
-
 return {
   {
     'neovim/nvim-lspconfig',
-    cond = enabled,
+    cond = Plugin_enable_LSP,
     lazy = true,
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -55,7 +53,7 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    cond = enabled,
+    cond = Plugin_enable_LSP,
     event = { 'BufReadPost', 'BufNewFile', 'FileType' },
     dependencies = {
       'neovim/nvim-lspconfig',
