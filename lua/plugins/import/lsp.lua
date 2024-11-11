@@ -54,18 +54,6 @@ return {
     end,
   },
   {
-    'williamboman/mason.nvim',
-    cmd = {
-      "Mason",
-      "MasonInstall",
-      "MasonUninstall",
-      "MasonUninstallAll",
-      "MasonLog",
-      "MasonUpdate",
-    },
-    opts = {},
-  },
-  {
     'williamboman/mason-lspconfig.nvim',
     cond = enabled,
     event = { 'BufReadPost', 'BufNewFile', 'FileType' },
