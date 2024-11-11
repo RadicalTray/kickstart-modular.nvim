@@ -3,6 +3,7 @@ local enabled = false
 return {
   {
     'neovim/nvim-lspconfig',
+    cond = enabled,
     lazy = true,
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -63,36 +64,6 @@ return {
       "MasonUpdate",
     },
     opts = {},
-  },
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    cond = enabled,
-    event = 'VeryLazy',
-    dependencies = 'williamboman/mason.nvim',
-    config = function()
-      local lsp = {
-        'lua-language-server',
-        'omnisharp',
-        'vtsls',
-        'eslint-lsp',
-        'css-lsp',
-        'tailwindcss-language-server',
-        'html-lsp',
-        'jdtls',
-        'bash-language-server',
-        'python-lsp-server',
-        'clangd',
-      }
-
-      local formatters = {
-        'stylua',
-        'beautysh',
-        'prettierd',
-        'clang-format',
-      }
-
-      require('mason-tool-installer').setup { ensure_installed = vim.list_extend(lsp, formatters) }
-    end,
   },
   {
     'williamboman/mason-lspconfig.nvim',
