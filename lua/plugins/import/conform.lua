@@ -7,7 +7,7 @@ local disable_filetypes = { c = true, cpp = true }
 return {
   -- Autoformat
   'stevearc/conform.nvim',
-  enabled = false,
+  cond = false,
   event = 'BufWritePre', -- in case format on save is enabled
   cmd = { 'ConformInfo' },
   keys = {

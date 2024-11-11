@@ -66,7 +66,7 @@ return {
   },
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    enabled = enabled,
+    cond = enabled,
     event = 'VeryLazy',
     dependencies = 'williamboman/mason.nvim',
     config = function()
@@ -96,7 +96,7 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    enabled = enabled,
+    cond = enabled,
     event = { 'BufReadPost', 'BufNewFile', 'FileType' },
     dependencies = {
       'neovim/nvim-lspconfig',
