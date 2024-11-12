@@ -20,9 +20,9 @@ return {
     --   },
     --   fallback_action = '<c-x><c-n>',
     -- }
-    vim.keymap.set('i', '<cr>', function()
-      return vim.fn.pumvisible() ~= 0 and '<c-y><cr>' or '<cr>'
-    end, { expr = true })
+    -- vim.keymap.set('i', '<cr>', function()
+    --   return vim.fn.pumvisible() ~= 0 and '<c-y><cr>' or '<cr>'
+    -- end, { expr = true })
 
     require('mini.git').setup {}
     vim.keymap.set('n', '<leader>gl', '<cmd>Git log<CR>', {

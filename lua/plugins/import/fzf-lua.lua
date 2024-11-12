@@ -1,15 +1,13 @@
 return {
   -- requires fzf, ofc
   'ibhagwan/fzf-lua',
-  dependencies = {
-    -- 'nvim-tree/nvim-web-devicons', -- optional
-    -- optional external dependencies
-    -- fd - better find utility
-    -- rg - better grep utility
-    -- bat - syntax highlighted previews when using fzf's native previewer
-    -- delta - syntax highlighted git pager for git status previews
-    -- nvim-dap - for Debug Adapter Protocol (DAP) support
-  },
+  dependencies = 'echasnovski/mini.nvim', -- for mini.icons (optional)
+  -- optional external dependencies
+  -- fd - better find utility
+  -- rg - better grep utility
+  -- bat - syntax highlighted previews when using fzf's native previewer
+  -- delta - syntax highlighted git pager for git status previews
+  -- nvim-dap - for Debug Adapter Protocol (DAP) support
   cmd = 'FzfLua',
   keys = {
     { '<leader>sh', '<cmd>FzfLua helptags<cr>', desc = '[S]earch [H]elp' },

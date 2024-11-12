@@ -5,6 +5,7 @@ return {
   keys = {
     { '<leader>oo', '<cmd>Oil %:p:h<CR>', { desc = '[O]pen [O]il.nvim' } },
   },
+  dependencies = 'echasnovski/mini.nvim', -- for mini.icons (optional)
   opts = {
     columns = {
       'icon',
@@ -17,5 +18,4 @@ return {
       show_hidden = true,
     },
   },
-  -- dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
