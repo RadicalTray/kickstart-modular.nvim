@@ -22,8 +22,10 @@ return {
     { '<leader>sq', '<cmd>FzfLua quickfix<cr>', desc = '[S]earch [Q]uickfix list' },
     { '<leader>sQ', '<cmd>FzfLua quickfix_stack<cr>', desc = '[S]earch [Q]uickfix stack' },
     { '<leader><leader>', '<cmd>FzfLua files<cr>', desc = '[ ] Search Files' },
-    { '<leader>s/', '<cmd>FzfLua blines<cr>', desc = '[S]earch in current buffer' },
+    { '<leader>s/', '<cmd>FzfLua grep_curbuf<cr>', desc = '[S]earch in current buffer' },
     { '<leader>sn', string.format('<cmd>FzfLua files cwd=%s<cr>', vim.fn.stdpath 'config'), desc = '[S]earch [N]eovim files' },
+    { '<leader>sw', '<cmd>FzfLua grep_cword<cr>', desc = '[S]earch current [W]ord' },
+    { mode = 'v', '<leader>sv', '<cmd>FzfLua grep_visual<cr>', desc = '[S]earch [V]isual' },
   },
   config = function()
     local fzf = require 'fzf-lua'
