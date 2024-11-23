@@ -50,11 +50,15 @@ function Stl_mode()
   return string.format('[%s] ', m or '???')
 end
 
--- is there buf_id?
+-- memory problems by this is probably practically impossible right?
+-- no need to free it on BufDelete? or is vim.b[id] already freed
+-- NOTE: I think this doesn't trigger on Oil.nvim buffers
 vim.api.nvim_create_autocmd('BufEnter', {
-  desc = 'Fetch git branch into vim.g.stl_git_branch on BufEnter',
+  desc = 'Fetch git branch into vim.b[bufid].stl_git_branch on BufEnter',
   group = vim.api.nvim_create_augroup('custom-statusline', { clear = true }),
-  callback = function()
+  callback = function(args)
+    local bufid = args.buf
+
     local success, call = pcall(vim.system, { 'git', 'rev-parse', '--abbrev-ref', 'HEAD' }, { cwd = vim.fn.expand '%:p:h' })
     if not success then
       return
@@ -62,18 +66,19 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
     local result = call:wait()
     if result.code == 0 then
-      vim.g.stl_git_branch = string.gsub(result.stdout, '\n', '')
+      vim.b[bufid].stl_git_branch = string.gsub(result.stdout, '\n', '')
     else
-      vim.g.stl_git_branch = nil
+      vim.b[bufid].stl_git_branch = nil
     end
   end,
 })
 
-function Stl_git_branch()
-  if vim.g.stl_git_branch == nil then
+function Stl_git_branch(bufid)
+  local branch = vim.b[bufid].stl_git_branch
+  if branch == nil then
     return ''
   end
-  return string.format('(%s) ', vim.g.stl_git_branch)
+  return string.format('(%s) ', branch)
 end
 
 function Stl_reg_recording()
@@ -90,8 +95,8 @@ vim.api.nvim_create_user_command('ToggleStlSearchCount', function()
 end, {
   desc = 'Toggle search count display on statusline',
 })
--- is this expensive? -> yep i think espeically with long search
--- waiting for https://github.com/neovim/neovim/issues/18879
+
+-- laggy, waiting for https://github.com/neovim/neovim/issues/18879
 function Stl_search_count()
   if vim.b.stl_search_count == nil and not vim.g.stl_search_count or vim.b.stl_search_count ~= nil and not vim.b.stl_search_count then
     return ''
@@ -118,11 +123,27 @@ function Stl_search_count()
 end
 
 function Stl_setup()
-  if vim.g.statusline_winid ~= vim.api.nvim_get_current_win() then
-    return '%#StlBranch#%{v:lua.Stl_git_branch()}%#StatusLine#%<%q%f %y %h%r%m%w %=%S %#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#%l:%c %-4.(%p%%%) %L Lines '
+  local winid = vim.g.statusline_winid
+  local bufid = vim.api.nvim_win_get_buf(winid)
+
+  local mode = '%#StlMode#%{v:lua.Stl_mode()}%#StatusLine#'
+  local git_branch = string.format('%s%i%s', '%#StlBranch#%{v:lua.Stl_git_branch(', bufid, ')}%#StatusLine#')
+  local middle = '%<%q%f %y %h%r%m%w'
+  local search = '%{v:lua.Stl_search_count()}'
+  local reg = '%#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#'
+  local right = '%l:%c %-4.(%p%%%) %L Lines'
+
+  if winid ~= vim.api.nvim_get_current_win() then
+    return string.format(
+      '%s%s%s%s%s',
+      git_branch, middle, '%=', reg, right
+    )
   end
 
-  return '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StatusLine#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#%l:%c %-4.(%p%%%) %L Lines '
+  return string.format(
+    '%s%s%s%s%s%s%s',
+    mode, git_branch, middle, '%=%S ', search, reg, right
+  )
 end
 
 -- %{} strips out leading spaces if it's in the middle (i think)
