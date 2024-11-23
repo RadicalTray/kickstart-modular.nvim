@@ -15,7 +15,7 @@ vim.opt.mousescroll = 'ver:1,hor:1'
 vim.opt.showmode = false
 vim.opt.showcmd = true
 vim.opt.showcmdloc = 'statusline'
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 vim.opt.cmdheight = 0
 require 'statusline'
 

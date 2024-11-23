@@ -50,6 +50,7 @@ function Stl_mode()
   return string.format('[%s] ', m or '???')
 end
 
+-- is there buf_id?
 vim.api.nvim_create_autocmd('BufEnter', {
   desc = 'Fetch git branch into vim.g.stl_git_branch on BufEnter',
   group = vim.api.nvim_create_augroup('custom-statusline', { clear = true }),
@@ -116,7 +117,14 @@ function Stl_search_count()
   return string.format('/%s [%d/%d] ', searchStr, result.current, result.total)
 end
 
+function Stl_setup()
+  if vim.g.statusline_winid ~= vim.api.nvim_get_current_win() then
+    return '%#StlBranch#%{v:lua.Stl_git_branch()}%#StatusLine#%<%q%f %y %h%r%m%w %=%S %#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#%l:%c %-4.(%p%%%) %L Lines '
+  end
+
+  return '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StatusLine#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#%l:%c %-4.(%p%%%) %L Lines '
+end
+
 -- %{} strips out leading spaces if it's in the middle (i think)
 -- See https://github.com/neovim/neovim/issues/28918
-vim.o.statusline =
-  '%#StlMode#%{v:lua.Stl_mode()}%#StlBranch#%{v:lua.Stl_git_branch()}%#StatusLine#%<%q%f %y %h%r%m%w %=%S %{v:lua.Stl_search_count()}%#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#%l:%c %-4.(%p%%%) %L Lines '
+vim.o.statusline = '%!v:lua.Stl_setup()'
