@@ -1,32 +1,39 @@
-local M = {
-    bufnr = vim.api.nvim_create_buf(true, true)
-}
+CustomBuffer = {}
 
-function M.set_name(name)
-    vim.api.nvim_buf_set_name(M.bufnr, name)
+function CustomBuffer:new()
+    local o = {
+        bufnr = vim.api.nvim_create_buf(true, true)
+    }
+    setmetatable(o, self)
+    self.__index = self
+    return o
 end
 
-function M.set_keymap(mode, lhs, rhs, opts)
-    vim.api.nvim_buf_set_keymap(M.bufnr, mode, lhs, rhs, opts)
+function CustomBuffer:set_name(name)
+    vim.api.nvim_buf_set_name(self.bufnr, name)
 end
 
-function M.set_lines(start, end_, strict_indexing, replacement)
-    vim.api.nvim_buf_set_lines(M.bufnr, start, end_, strict_indexing, replacement)
+function CustomBuffer:set_keymap(mode, lhs, rhs, opts)
+    vim.api.nvim_buf_set_keymap(self.bufnr, mode, lhs, rhs, opts)
 end
 
-function M.clear()
-    M.set_lines(0, -1, true, {})
+function CustomBuffer:set_lines(start, end_, strict_indexing, replacement)
+    vim.api.nvim_buf_set_lines(self.bufnr, start, end_, strict_indexing, replacement)
 end
 
-function M.close(force)
-    if M.winnr == nil then
+function CustomBuffer:clear()
+    self:set_lines(0, -1, true, {})
+end
+
+function CustomBuffer:close(force)
+    if self.winnr == nil then
         return
     end
-    vim.api.nvim_win_close(M.winnr, force)
-    M.winnr = nil
+    vim.api.nvim_win_close(self.winnr, force)
+    self.winnr = nil
 end
 
-function M.open(enter, config)
+function CustomBuffer:open(enter, config)
     config = vim.tbl_deep_extend(
         "keep",
         config,
@@ -35,7 +42,5 @@ function M.open(enter, config)
             split = "below",
         }
     )
-    M.winnr = vim.api.nvim_open_win(M.bufnr, enter, config)
+    self.winnr = vim.api.nvim_open_win(self.bufnr, enter, config)
 end
-
-return M

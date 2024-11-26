@@ -12,26 +12,27 @@ function state.add_msg(msg)
     table.insert(state.msg, 1, msg)
 end
 
-local msg_buf = require 'ui_buffer'
-local cmd_buf = require 'ui_buffer'
+require 'ui_buffer'
+local msg_buf = CustomBuffer:new()
+local cmd_buf = CustomBuffer:new()
 local handlers = require 'ui_handlers'
 handlers.msg_buf = msg_buf
 handlers.cmd_buf = cmd_buf
 
-msg_buf.set_lines(0, -1, true, state.texts)
-msg_buf.set_lines(-1, -1, true, { "police" })
-msg_buf.set_name("messages")
-msg_buf.set_keymap("n", "q", "<cmd>q<cr>", { noremap = true })
+msg_buf:set_lines(0, -1, true, state.texts)
+msg_buf:set_lines(-1, -1, true, { "police" })
+msg_buf:set_name("messages")
+msg_buf:set_keymap("n", "q", "<cmd>q<cr>", { noremap = true })
 
-cmd_buf.set_name("commands")
-cmd_buf.set_keymap("n", "q", "<cmd>q<cr>", { noremap = true })
+cmd_buf:set_name("commands")
+cmd_buf:set_keymap("n", "q", "<cmd>q<cr>", { noremap = true })
 
 vim.api.nvim_create_user_command('MsgBufOpen', function()
-    msg_buf.open(false, {})
+    msg_buf:open(false, {})
 end, {})
 
 vim.api.nvim_create_user_command('CmdBufOpen', function()
-    cmd_buf.open(false, {})
+    cmd_buf:open(false, {})
 end, {})
 
 -- TODO: Are ui-linegrid events mandatory?
