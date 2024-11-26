@@ -21,6 +21,10 @@ function CustomBuffer:set_lines(start, end_, strict_indexing, replacement)
     vim.api.nvim_buf_set_lines(self.bufnr, start, end_, strict_indexing, replacement)
 end
 
+function CustomBuffer:append_lines(strict_indexing, replacement)
+    self:set_lines(-1, -1, strict_indexing, replacement)
+end
+
 function CustomBuffer:clear()
     self:set_lines(0, -1, true, {})
 end
@@ -34,13 +38,8 @@ function CustomBuffer:close(force)
 end
 
 function CustomBuffer:open(enter, config)
-    config = vim.tbl_deep_extend(
-        "keep",
-        config,
-        {
-            height = 5,
-            split = "below",
-        }
-    )
+    if self.winnr ~= nil then
+        return
+    end
     self.winnr = vim.api.nvim_open_win(self.bufnr, enter, config)
 end

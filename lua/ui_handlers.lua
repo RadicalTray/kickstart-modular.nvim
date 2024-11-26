@@ -1,11 +1,14 @@
----@diagnostic disable: unused-local
+---@diagnostic disable: unused-local, undefined-field
 local M = {
     msg_buf = nil,
     cmd_buf = nil,
+    state = nil,
 }
 
 -- Cmd
 function M.cmdline_show(content, pos, firstc, prompt, indent, level)
+    -- TODO: multiple lvl on multiple lines support? (never used it lol)
+    -- TODO: apply attrs to string
 end
 
 function M.cmdline_pos(pos, level)
@@ -15,6 +18,7 @@ function M.cmdline_special_char(c, shift, level)
 end
 
 function M.cmdline_hide()
+    M.cmd_buf:close()
 end
 
 function M.cmdline_block_show(lines)
