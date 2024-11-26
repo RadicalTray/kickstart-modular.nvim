@@ -30,10 +30,15 @@ vim.api.nvim_create_user_command('MsgBufOpen', function()
     msg_buf.open(false, {})
 end, {})
 
+vim.api.nvim_create_user_command('CmdBufOpen', function()
+    cmd_buf.open(false, {})
+end, {})
+
+-- TODO: Are ui-linegrid events mandatory?
 -- vim.ui_attach(
 --     ns,
 --     { ext_messages = true }, -- implicitly activate ui-linegrid, ui-cmdline
 --     function(event, ...)
--- end
+--         handlers[event](...)
 --     end
 -- )

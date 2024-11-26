@@ -1,61 +1,84 @@
-local handlers = {
+---@diagnostic disable: unused-local
+local M = {
     msg_buf = nil,
     cmd_buf = nil,
 }
 
-function handlers.cmdline_show(content, pos, firstc, prompt, indent, level)
+-- Cmd
+function M.cmdline_show(content, pos, firstc, prompt, indent, level)
 end
 
-function handlers.cmdline_pos(pos, level)
+function M.cmdline_pos(pos, level)
 end
 
-function handlers.cmdline_special_char(c, shift, level)
+function M.cmdline_special_char(c, shift, level)
 end
 
-function handlers.cmdline_hide()
+function M.cmdline_hide()
 end
 
-function handlers.cmdline_block_show(lines)
+function M.cmdline_block_show(lines)
 end
 
-function handlers.cmdline_block_append(line)
+function M.cmdline_block_append(line)
 end
 
-function handlers.cmdline_block_hide()
+function M.cmdline_block_hide()
 end
 
--- if event == 'msg_show' then
---     local kind, content, replace_last = ...
---     for attr_id, text_chunk, hl_id in content do
---     end
---     if kind == "" then
---     elseif kind == "confirm" then
---     elseif kind == "confirm_sub" then
---     elseif kind == "emsg" then
---     elseif kind == "echo" then
---     elseif kind == "echomsg" then
---     elseif kind == "echoerr" then
---     elseif kind == "list_cmd" then
---     elseif kind == "lua_error" then
---     elseif kind == "lua_print" then
---     elseif kind == "rpc_error" then
---     elseif kind == "number_prompt" then
---     elseif kind == "return_prompt" then
---         vim.api.nvim_input("<cr>")
---     elseif kind == "quickfix" then
---     elseif kind == "search_cmd" then
---     elseif kind == "search_count" then
---     elseif kind == "wildlist" then
---     elseif kind == "wmsg" then
---     end
--- elseif event == 'msg_clear' then
--- elseif event == 'msg_showmode' then
---     local content = ...
--- elseif event == 'msg_showcmd' then
---     local content = ...
--- elseif event == 'msg_ruler' then
---     local content = ...
--- elseif event == 'msg_history_show' then
---     local entries = ...
--- elseif event == 'msg_history_clear' then
-return handlers
+-- Msg
+local msg_show_handlers = require 'ui_handlers_msg_show'
+function M.msg_show(kind, content, replace_last)
+    if kind == '' then
+        return
+    end
+    msg_show_handlers[kind](content, replace_last)
+end
+
+function M.msg_clear()
+end
+
+function M.msg_showmode(content)
+end
+
+function M.msg_showcmd(content)
+end
+
+function M.msg_ruler(content)
+end
+
+function M.msg_history_show(entries)
+end
+
+function M.msg_history_clear()
+end
+
+-- Grid
+function M.grid_resize(grid, width, height)
+end
+
+function M.default_colors_set(rgb_fg, rgb_bg, rgb_sp, cterm_fg, cterm_bg)
+end
+
+function M.hl_attr_define(id, rgb_attr, cterm_attr, info)
+end
+
+function M.hl_group_set(name, hl_id)
+end
+
+function M.grid_line(grid, row, col_start, cells, wrap)
+end
+
+function M.grid_clear(grid)
+end
+
+function M.grid_destroy(grid)
+end
+
+function M.grid_cursor_goto(grid, row, col)
+end
+
+function M.grid_scroll(grid, top, bot, left, right, rows, cols)
+end
+
+return M
