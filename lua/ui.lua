@@ -10,7 +10,7 @@ function state.add_msg(msg)
     table.insert(state.msg, 1, msg)
 end
 
-require 'ui_buffer'
+local CustomBuffer = require 'ui_buffer'
 local msg_buf = CustomBuffer:new()
 local cmd_buf = CustomBuffer:new()
 

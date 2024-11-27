@@ -1,4 +1,4 @@
-CustomBuffer = {}
+local CustomBuffer = {}
 
 function CustomBuffer:new()
     local o = {
@@ -7,6 +7,10 @@ function CustomBuffer:new()
     setmetatable(o, self)
     self.__index = self
     return o
+end
+
+function CustomBuffer:set_option(name, value)
+    vim.api.nvim_set_option_value(name, value, { buf = self.bufnr })
 end
 
 function CustomBuffer:set_name(name)
@@ -43,3 +47,5 @@ function CustomBuffer:open(enter, config)
     end
     self.winnr = vim.api.nvim_open_win(self.bufnr, enter, config)
 end
+
+return CustomBuffer
