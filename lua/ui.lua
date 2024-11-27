@@ -1,8 +1,8 @@
 local state = {
     last = nil,
     msg = {
-        "sex",
-        "drugs",
+        'sex',
+        'drugs',
     },
 }
 
@@ -15,19 +15,20 @@ local msg_buf = CustomBuffer:new()
 local cmd_buf = CustomBuffer:new()
 
 msg_buf:set_lines(0, -1, true, state.msg)
-msg_buf:append_lines(true, { "police" })
-msg_buf:set_name("messages")
-msg_buf:set_keymap("n", "q", "<cmd>q<cr>", { noremap = true })
+msg_buf:append_lines(true, { 'police' })
+msg_buf:set_name('messages')
+msg_buf:set_keymap('n', 'q', '<cmd>q<cr>', { noremap = true })
 
-cmd_buf:set_name("commands")
-cmd_buf:set_keymap("n", "q", "<cmd>q<cr>", { noremap = true })
+cmd_buf:set_name('commands')
+cmd_buf:set_keymap('n', 'q', '<cmd>q<cr>', { noremap = true })
+cmd_buf:set_option('buftype', 'prompt')
 
 vim.api.nvim_create_user_command('MsgBufOpen', function()
-    msg_buf:open(false, { height = 5, split = "below" })
+    msg_buf:open(false, { height = 5, split = 'below' })
 end, {})
 
 vim.api.nvim_create_user_command('CmdBufOpen', function()
-    cmd_buf:open(false, { height = 1, split = "below" })
+    cmd_buf:open(false, { height = 1, split = 'below' })
 end, {})
 
 local handlers = require 'ui_handlers'
@@ -36,12 +37,12 @@ handlers.cmd_buf = cmd_buf
 handlers.state = state
 
 -- TODO: Are ui-linegrid events needed to be handled?
--- os.execute("rm ~/.config/nvim/hello_world")
+-- os.execute('rm ~/.config/nvim/hello_world')
 -- vim.ui_attach(
 --     vim.api.nvim_create_namespace('custom_ui'),
 --     { ext_messages = true }, -- implicitly activate ui-linegrid, ui-cmdline
 --     function(event, ...)
---         os.execute("echo '" .. event .. "' >> ~/.config/nvim/hello_world")
+--         os.execute('echo '' .. event .. '' >> ~/.config/nvim/hello_world')
 --         handlers[event](...)
 --     end
 -- )
