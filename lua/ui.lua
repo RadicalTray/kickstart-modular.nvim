@@ -37,12 +37,12 @@ handlers.cmd_buf = cmd_buf
 handlers.state = state
 
 -- TODO: Are ui-linegrid events needed to be handled?
--- os.execute('rm ~/.config/nvim/hello_world')
+-- os.execute('rm ~/.config/nvim/debug_ui_attach')
 -- vim.ui_attach(
 --     vim.api.nvim_create_namespace('custom_ui'),
 --     { ext_messages = true }, -- implicitly activate ui-linegrid, ui-cmdline
 --     function(event, ...)
---         os.execute('echo '' .. event .. '' >> ~/.config/nvim/hello_world')
+--         os.execute("echo '" .. event .. "' >> ~/.config/nvim/debug_ui_attach")
 --         handlers[event](...)
 --     end
 -- )

@@ -6,9 +6,12 @@ local M = {
 }
 
 -- Cmd
+os.execute('rm ~/.config/nvim/debug_cmdline_show')
 function M.cmdline_show(content, pos, firstc, prompt, indent, level)
     -- TODO: multiple lvl on multiple lines support? (never used it lol)
     -- TODO: apply attrs to string
+    os.execute("echo '" .. vim.inspect(content) .. "' >> ~/.config/nvim/debug_cmdline_show")
+    M.cmd_buf:open(true, { height = 1, split = 'bottom' })
 end
 
 function M.cmdline_pos(pos, level)
@@ -84,5 +87,61 @@ end
 
 function M.grid_scroll(grid, top, bot, left, right, rows, cols)
 end
+
+-- function Input:mount()
+--   local props = self.input_props
+--
+--   if self._.mounted then
+--     return
+--   end
+--
+--   Input.super.mount(self)
+--
+--   if self._.on_change then
+--     ---@deprecated
+--     props.on_change = function()
+--       local value_with_prompt = vim.api.nvim_buf_get_lines(self.bufnr, 0, 1, false)[1]
+--       local value = string.sub(value_with_prompt, self._.prompt:length() + 1)
+--       self._.on_change(value)
+--     end
+--
+--     vim.api.nvim_buf_attach(self.bufnr, false, {
+--       on_lines = props.on_change,
+--     })
+--   end
+--
+--   ---@deprecated
+--   props.on_submit = function(value)
+--     self._.pending_submit_value = value
+--     self:unmount()
+--   end
+--
+--   vim.fn.prompt_setcallback(self.bufnr, props.on_submit)
+--
+--   -- @deprecated
+--   --- Use `input:unmount`
+--   ---@deprecated
+--   props.on_close = function()
+--     self:unmount()
+--   end
+--
+--   vim.fn.prompt_setinterrupt(self.bufnr, props.on_close)
+--
+--   vim.fn.prompt_setprompt(self.bufnr, self._.prompt:content())
+--
+--   self:on(event.InsertEnter, function()
+--     if #self._.default_value then
+--       vim.api.nvim_feedkeys(self._.default_value, "n", true)
+--     end
+--
+--     if self._.prompt:length() > 0 then
+--       vim.schedule(function()
+--         self._.prompt:highlight(self.bufnr, self.ns_id, 1, 0)
+--       end)
+--     end
+--   end, { once = true })
+--
+--   vim.api.nvim_command("startinsert!")
+-- end
 
 return M
