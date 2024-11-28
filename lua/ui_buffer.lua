@@ -1,8 +1,8 @@
 local CustomBuffer = {}
 
-function CustomBuffer:new(stl)
+function CustomBuffer:new(stl, listed, scratch)
     local o = {
-        bufnr = vim.api.nvim_create_buf(true, true),
+        bufnr = vim.api.nvim_create_buf(listed, scratch),
         stl = stl,
     }
     setmetatable(o, self)

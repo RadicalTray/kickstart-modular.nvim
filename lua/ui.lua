@@ -4,61 +4,35 @@ local state = {
         'sex',
         'drugs',
     },
+    cmd_hist = {},
 }
 
 function state.add_msg(msg)
     table.insert(state.msg, 1, msg)
 end
 
-local CustomBuffer = require 'ui_buffer'
-local msg_buf = CustomBuffer:new('[Message]')
-local cmd_buf = CustomBuffer:new('[Command]')
-
-msg_buf:set_lines(0, -1, true, state.msg)
-msg_buf:append_lines(true, { 'police' })
-msg_buf:set_keymap('n', 'q', '<cmd>q<cr>', { noremap = true })
-
-cmd_buf:set_keymap('n', 'q', '<cmd>q<cr>', { noremap = true })
-cmd_buf:set_option('buftype', 'prompt')
-
-local callback = function (value)
-    local submit_val = value
-    cmd_buf:close()
+function state.add_cmd(cmd)
+    table.insert(state.cmd_hist, 1, cmd)
 end
--- vim.fn.prompt_setcallback()
-vim.fn.prompt_setinterrupt(cmd_buf.bufnr, function ()
-    cmd_buf.close()
-end) -- how to use this??
-vim.fn.prompt_setprompt(cmd_buf.bufnr, 'command: ')
--- vim.api.nvim_buf_attach(cmd_buf.bufnr, false, {
---     on_lines = function ()
---     end,
---     on_closed = function ()
---     end
--- })
 
-vim.api.nvim_create_user_command('MsgBufOpen', function()
-    msg_buf:open(false, { height = 5, split = 'below' })
-end, {})
-
-vim.api.nvim_create_user_command('CmdBufOpen', function()
-    cmd_buf:open(false, { height = 1, split = 'below' })
-end, {})
-
-cmd_buf:open(false, { height = 1, split = 'below' })
+local msg_buf = require 'ui_msg_buf'
+local cmd_buf = require 'ui_cmd_buf'
 
 local handlers = require 'ui_handlers'
 handlers.msg_buf = msg_buf
 handlers.cmd_buf = cmd_buf
 handlers.state = state
 
--- TODO: Are ui-linegrid events needed to be handled?
--- os.execute('rm ~/.config/nvim/debug_ui_attach')
+-- local home = os.getenv('HOME')
+-- local debug_ui = assert(io.open(home .. '/.config/nvim/debug', 'w'))
 -- vim.ui_attach(
 --     vim.api.nvim_create_namespace('custom_ui'),
 --     { ext_messages = true }, -- implicitly activate ui-linegrid, ui-cmdline
+-- ---@diagnostic disable-next-line: redundant-parameter
 --     function(event, ...)
---         os.execute("echo '" .. event .. "' >> ~/.config/nvim/debug_ui_attach")
+--         if debug_ui ~= nil then
+--             debug_ui:write(vim.inspect({ event, ... }), '\n')
+--         end
 --         handlers[event](...)
 --     end
 -- )

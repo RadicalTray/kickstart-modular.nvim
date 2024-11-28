@@ -6,11 +6,9 @@ local M = {
 }
 
 -- Cmd
-os.execute('rm ~/.config/nvim/debug_cmdline_show')
 function M.cmdline_show(content, pos, firstc, prompt, indent, level)
     -- TODO: multiple lvl on multiple lines support? (never used it lol)
     -- TODO: apply attrs to string
-    os.execute("echo '" .. vim.inspect(content) .. "' >> ~/.config/nvim/debug_cmdline_show")
 end
 
 function M.cmdline_pos(pos, level)
