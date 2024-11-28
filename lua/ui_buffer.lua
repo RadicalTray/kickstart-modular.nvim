@@ -1,8 +1,9 @@
 local CustomBuffer = {}
 
-function CustomBuffer:new()
+function CustomBuffer:new(stl)
     local o = {
-        bufnr = vim.api.nvim_create_buf(true, true)
+        bufnr = vim.api.nvim_create_buf(true, true),
+        stl = stl,
     }
     setmetatable(o, self)
     self.__index = self
@@ -46,6 +47,11 @@ function CustomBuffer:open(enter, config)
         return
     end
     self.winnr = vim.api.nvim_open_win(self.bufnr, enter, config)
+    self:m_onOpen()
+end
+
+function CustomBuffer:m_onOpen()
+    vim.api.nvim_set_option_value('statusline', self.stl, { win = self.winnr })
 end
 
 return CustomBuffer

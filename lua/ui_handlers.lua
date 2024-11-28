@@ -11,7 +11,6 @@ function M.cmdline_show(content, pos, firstc, prompt, indent, level)
     -- TODO: multiple lvl on multiple lines support? (never used it lol)
     -- TODO: apply attrs to string
     os.execute("echo '" .. vim.inspect(content) .. "' >> ~/.config/nvim/debug_cmdline_show")
-    M.cmd_buf:open(true, { height = 1, split = 'bottom' })
 end
 
 function M.cmdline_pos(pos, level)
