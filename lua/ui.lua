@@ -23,16 +23,21 @@ handlers.msg_buf = msg_buf
 handlers.cmd_buf = cmd_buf
 handlers.state = state
 
--- local home = os.getenv('HOME')
--- local debug_ui = assert(io.open(home .. '/.config/nvim/debug', 'w'))
--- vim.ui_attach(
---     vim.api.nvim_create_namespace('custom_ui'),
---     { ext_messages = true }, -- implicitly activate ui-linegrid, ui-cmdline
--- ---@diagnostic disable-next-line: redundant-parameter
---     function(event, ...)
---         if debug_ui ~= nil then
---             debug_ui:write(vim.inspect({ event, ... }), '\n')
---         end
---         handlers[event](...)
---     end
--- )
+local on = false
+
+if on then
+local home = os.getenv('HOME')
+local debug_filename = home .. '/.config/nvim/debug'
+os.execute("echo > '" .. debug_filename .. "'")
+vim.ui_attach(
+    vim.api.nvim_create_namespace('custom_ui'),
+    { ext_messages = true }, -- implicitly activate ui-linegrid, ui-cmdline
+---@diagnostic disable-next-line: redundant-parameter
+    function(event, ...)
+        local debug_ui = assert(io.open(debug_filename, 'a'))
+        debug_ui:write(vim.inspect({ event, ... }), '\n')
+        debug_ui:close()
+        handlers[event](...)
+    end
+)
+end

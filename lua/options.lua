@@ -13,6 +13,7 @@ vim.opt.mousescroll = 'ver:1,hor:1'
 
 -- vim.opt.laststatus = -1 -- bye :(
 vim.opt.showmode = false
+vim.opt.ruler = false
 vim.opt.showcmd = true
 vim.opt.showcmdloc = 'statusline'
 vim.opt.laststatus = 2

@@ -1,22 +1,48 @@
+
 { "msg_showmode", {} }
 { "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
 { "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "h" } }, 1, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "ha" } }, 2, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "hao" } }, 3, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoe" } }, 4, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoen" } }, 5, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoeni" } }, 6, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenit" } }, 7, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenith" } }, 8, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenitha" } }, 9, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenithao" } }, 10, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenithaos" } }, 11, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenithaosn" } }, 12, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenithaosne" } }, 13, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenithaosnet" } }, 14, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenithaosnetu" } }, 15, ":", "", 0, 1 }
-{ "cmdline_show", { { 0, "haoenithaosnetuh" } }, 16, ":", "", 0, 1 }
+{ "cmdline_hide", 1 }
+{ "msg_showmode", {} }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "n" } }, 1, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "na" } }, 2, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "nao" } }, 3, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naot" } }, 4, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naote" } }, 5, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naoteh" } }, 6, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehu" } }, 7, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehus" } }, 8, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusa" } }, 9, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusao" } }, 10, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaon" } }, 11, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaont" } }, 12, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaonth" } }, 13, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaonthe" } }, 14, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheu" } }, 15, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheus" } }, 16, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusa" } }, 17, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusao" } }, 18, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusaon" } }, 19, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusaont" } }, 20, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusaonth" } }, 21, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusaonthu" } }, 22, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusaonthue" } }, 23, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "naotehusaontheusaonthue" } }, 23, ":", "", 0, 1 }
+{ "cmdline_hide", 1 }
+{ "msg_showmode", {} }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_hide", 1 }
+{ "msg_showmode", {} }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
+{ "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
 { "cmdline_hide", 1 }
 { "msg_showmode", {} }
 { "cmdline_show", { { 0, "" } }, 0, ":", "", 0, 1 }
