@@ -38,7 +38,10 @@ function CustomBuffer:close(force)
     if self.winnr == nil then
         return
     end
-    vim.api.nvim_win_close(self.winnr, force)
+
+    if vim.api.nvim_win_is_valid(self.winnr) then
+        vim.api.nvim_win_close(self.winnr, force)
+    end
     self.winnr = nil
 end
 
@@ -52,6 +55,8 @@ end
 
 function CustomBuffer:m_onOpen()
     vim.api.nvim_set_option_value('statusline', self.stl, { win = self.winnr })
+    vim.api.nvim_set_option_value('number', false, { win = self.winnr })
+    vim.api.nvim_set_option_value('relativenumber', false, { win = self.winnr })
 end
 
 return CustomBuffer

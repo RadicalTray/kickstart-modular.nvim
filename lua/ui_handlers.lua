@@ -9,6 +9,7 @@ local M = {
 function M.cmdline_show(content, pos, firstc, prompt, indent, level)
     -- TODO: multiple lvl on multiple lines support? (never used it lol)
     -- TODO: apply attrs to string
+    M.cmd_buf:open(false, { relative = 'editor', width = 2147483647, height = 1, row = 2147483647, col = 0 })
 end
 
 function M.cmdline_pos(pos, level)
@@ -36,6 +37,11 @@ function M.msg_show(kind, content, replace_last)
     if kind == '' then
         return
     end
+----
+local db_hdl = assert(io.open('/home/luna/.config/nvim/debug', 'a'))
+db_hdl:write(vim.inspect(content), '\n')
+db_hdl:close()
+----
     msg_show_handlers[kind](content, replace_last)
 end
 
