@@ -1,4 +1,4 @@
-Plugin_enable_LSP = true
+Plugin_enable_LSP = false
 Plugin_enable_format = false
 
 require('lazy').setup {
