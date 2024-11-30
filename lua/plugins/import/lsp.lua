@@ -58,7 +58,7 @@ return {
     dependencies = {
       'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
+      'echasnovski/mini.nvim', -- for notify
       { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
