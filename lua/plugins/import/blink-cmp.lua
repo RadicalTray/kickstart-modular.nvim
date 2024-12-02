@@ -23,7 +23,7 @@ return {
     },
     sources = {
       completion = {
-        enabled_providers = { 'lsp', 'path', 'buffer' },
+        enabled_providers = { 'path', 'buffer' },
       },
     },
   },
