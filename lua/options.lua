@@ -69,7 +69,7 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 5
 
 -- Disable all default neovim cursor styling (should follow terminal's cursor now)
 vim.opt.guicursor = ''
