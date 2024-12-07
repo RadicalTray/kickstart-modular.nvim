@@ -7,16 +7,11 @@ return {
 
     require('mini.notify').setup {
       window = {
-        -- Floating window config
         config = {
           border = "none",
         },
-
-        -- Maximum window width as share (between 0 and 1) of available columns
-        max_width_share = 0.382,
-
-        -- Value of 'winblend' option
-        winblend = 25,
+        max_width_share = 0.4,
+        winblend = 0,
       },
     }
     vim.notify = require('mini.notify').make_notify()
