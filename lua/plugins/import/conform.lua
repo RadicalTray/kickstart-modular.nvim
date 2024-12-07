@@ -4,8 +4,15 @@
 local disable_filetypes = { c = true, cpp = true }
 -- local force_filetypes = { javascript = true }
 
+local prettier_fmtr = function(bufnr)
+  if require('conform').get_formatter_info('prettierd', bufnr).available then
+    return { 'prettierd' }
+  else
+    return { 'prettier' }
+  end
+end
+
 return {
-  -- Autoformat
   'stevearc/conform.nvim',
   cond = Plugin_enable_format,
   event = 'BufWritePre', -- in case format on save is enabled
@@ -39,14 +46,9 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      json = { 'prettierd' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use a sub-list to tell conform to run *until* a formatter
-      -- is found.
-      javascript = { { 'prettierd', 'prettier' } },
-      javascriptreact = { { 'prettierd', 'prettier' } },
+      json = prettier_fmtr,
+      javascript = prettier_fmtr,
+      javascriptreact = prettier_fmtr,
       cpp = { 'clang-format' },
       c = { 'clang-format' },
     },

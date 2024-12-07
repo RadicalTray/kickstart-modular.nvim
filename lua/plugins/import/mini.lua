@@ -1,6 +1,5 @@
 return {
   'echasnovski/mini.nvim',
-  event = 'VimEnter',
   version = false,
   config = function()
     require('mini.icons').setup {}

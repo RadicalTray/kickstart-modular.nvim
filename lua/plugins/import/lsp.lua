@@ -2,25 +2,10 @@ return {
   {
     'neovim/nvim-lspconfig',
     cond = Plugin_enable_LSP,
-    lazy = true,
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    cond = Plugin_enable_LSP,
-    event = { 'BufReadPost', 'BufNewFile', 'FileType' },
     dependencies = {
-      'neovim/nvim-lspconfig',
+      'williamboman/mason-lspconfig.nvim',
       'williamboman/mason.nvim',
       'echasnovski/mini.nvim', -- for notify
-      {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {
-          library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-          },
-        },
-      },
     },
     config = function()
       local server_configs = {
@@ -70,5 +55,15 @@ return {
         },
       }
     end,
+  },
+  {
+    "folke/lazydev.nvim",
+    cond = Plugin_enable_LSP,
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
   },
 }
