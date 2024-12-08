@@ -77,7 +77,7 @@ vim.opt.guicursor = ''
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = -1
 vim.opt.expandtab = true
-vim.opt.showbreak = '↳'
+-- vim.opt.showbreak = '↳'
 
 -- User commands to quickly enable/disable autoformatting
 vim.g.disable_autoformat = true
