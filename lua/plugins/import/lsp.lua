@@ -21,30 +21,12 @@ return {
             },
           },
         },
-        omnisharp = {
-          settings = {
-            FormattingOptions = {
-              EnableEditorConfigSupport = true,
-              OrganizeImports = true,
-            },
-            MsBuild = {
-              LoadProjectsOnDemand = false,
-            },
-            RoslynExtensionsOptions = {
-              EnableAnalyzersSupport = false,
-              EnableImportCompletion = true,
-              AnalyzeOpenDocumentsOnly = true,
-            },
-            Sdk = {
-              IncludePrereleases = true,
-            },
-          },
-        },
       }
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = false
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
+---@diagnostic disable-next-line: missing-fields
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
