@@ -22,9 +22,7 @@ return {
       use_nvim_cmp_as_default = true,
     },
     sources = {
-      completion = {
-        enabled_providers = { 'path', 'buffer' },
-      },
+      default = { 'path', 'buffer' }
     },
   },
 }

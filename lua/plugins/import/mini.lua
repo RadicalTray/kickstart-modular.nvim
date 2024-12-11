@@ -9,7 +9,7 @@ return {
         config = {
           border = "none",
         },
-        max_width_share = 0.4,
+        max_width_share = 0.5,
         winblend = 0,
       },
     }
