@@ -22,15 +22,22 @@ local function set_wildignore_from_cmds(cmds)
     assert(type(cmds) == 'table')
     for _, cmd in ipairs(cmds) do
         assert(type(cmd) == 'table')
-        local ok, global_call = pcall(vim.system, cmd)
-        if ok then
-            local res = global_call:wait()
-            if res.code == 0 then
-                for line in res.stdout:gmatch('[^\n]+') do
-                    vim.opt.wildignore:append(line)
+        pcall(
+            vim.system,
+            cmd,
+            { text = true },
+            function (obj)
+                if obj.code == 0 then
+                    for line in obj.stdout:gmatch('[^\n]+') do
+                        vim.opt.wildignore:append(line)
+                    end
+                else
+                    if obj.stderr ~= '' then
+                        vim.notify(obj.stderr, vim.log.levels.ERROR)
+                    end
                 end
             end
-        end
+        )
     end
 end
 
