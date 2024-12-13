@@ -2,6 +2,17 @@
 --
 -- why do i even put asserts in here when im the only one using this?
 
+local function set_wildignore_from_gitignore_pattern(pattern)
+    if pattern == '' then
+        return
+    end
+
+    vim.opt.wildignore:append(pattern)
+    if pattern:sub(-1, -1) ~= '/' then
+        vim.opt.wildignore:append(string.format('%s%s', pattern, '/'))
+    end
+end
+
 local function set_wildignore_from_files(files)
     assert(type(files) == 'table')
     for _, file in ipairs(files) do
@@ -9,9 +20,9 @@ local function set_wildignore_from_files(files)
         local ok, handle = pcall(assert, io.open(file))
         if ok then
             for line in handle:lines() do
-              if line:sub(1, 1) ~= '#' then
-                vim.opt.wildignore:append(line)
-              end
+                if line:sub(1, 1) ~= '#' then
+                    set_wildignore_from_gitignore_pattern(line)
+                end
             end
             handle:close()
         end
@@ -29,7 +40,7 @@ local function set_wildignore_from_cmds(cmds)
             function (obj)
                 if obj.code == 0 then
                     for line in obj.stdout:gmatch('[^\n]+') do
-                        vim.opt.wildignore:append(line)
+                        set_wildignore_from_gitignore_pattern(line)
                     end
                 else
                     if obj.stderr ~= '' then
@@ -43,9 +54,9 @@ end
 
 local function set_wildignore()
     vim.o.wildignore = ''
-    local default_patterns = { '.git', '.git/' }
+    local default_patterns = { '.git' } -- gitignore pattern
     for _, pattern in ipairs(default_patterns) do
-        vim.opt.wildignore:append(pattern)
+        set_wildignore_from_gitignore_pattern(pattern)
     end
     set_wildignore_from_files { '.gitignore', '.git/info/exclude' }
     set_wildignore_from_cmds {
