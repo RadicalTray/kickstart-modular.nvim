@@ -2,14 +2,17 @@
 --
 -- why do i even put asserts in here when im the only one using this?
 
+-- NOTE: might not work properly
 local function set_wildignore_from_gitignore_pattern(pattern)
     if pattern == '' then
         return
     end
 
-    vim.opt.wildignore:append(pattern)
     if pattern:sub(-1, -1) ~= '/' then
-        vim.opt.wildignore:append(string.format('%s%s', pattern, '/'))
+        vim.opt.wildignore:append(pattern)
+        vim.opt.wildignore:append(string.format('%s%s', pattern, '/*'))
+    else
+        vim.opt.wildignore:append(string.format('%s%s', pattern, '*'))
     end
 end
 
