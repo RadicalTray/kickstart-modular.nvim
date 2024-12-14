@@ -18,11 +18,9 @@ return {
     fuzzy = {
       use_frecency = false,
     },
-    highlight = {
-      use_nvim_cmp_as_default = true,
-    },
     sources = {
-      default = { 'path', 'buffer' }
+      default = { 'path', 'buffer' },
+      cmdline = {},
     },
   },
 }
