@@ -1,6 +1,7 @@
--- [[ Setting options ]]
--- See `:help vim.opt`
--- NOTE: For more options, you can see `:help option-list`
+-- NOTE: These should be set before lazy
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.g.have_nerd_font = true
 
 vim.cmd.colorscheme 'default-transparent'
 
