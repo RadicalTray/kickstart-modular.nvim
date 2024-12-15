@@ -1,6 +1,6 @@
 return {
   'williamboman/mason.nvim',
-  cond = Plugin_enable_LSP or Plugin_enable_format,
+  cond = Env.lsp or Env.format,
   cmd = {
     "Mason",
     "MasonInstall",

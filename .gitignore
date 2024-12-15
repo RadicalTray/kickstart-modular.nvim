@@ -1,7 +1,2 @@
-tags
-test.sh
-.luarc.json
-nvim
-
-spell/
+lua/env.lua
 lazy-lock.json

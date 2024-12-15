@@ -1,7 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    cond = Plugin_enable_LSP,
+    cond = Env.lsp,
     dependencies = {
       'williamboman/mason-lspconfig.nvim',
       'williamboman/mason.nvim',
@@ -40,7 +40,7 @@ return {
   },
   {
     "folke/lazydev.nvim",
-    cond = Plugin_enable_LSP,
+    cond = Env.lsp,
     ft = "lua",
     opts = {
       library = {

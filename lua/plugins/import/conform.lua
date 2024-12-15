@@ -14,7 +14,7 @@ end
 
 return {
   'stevearc/conform.nvim',
-  cond = Plugin_enable_format,
+  cond = Env.format,
   event = 'BufWritePre', -- in case format on save is enabled
   cmd = { 'ConformInfo' },
   keys = {

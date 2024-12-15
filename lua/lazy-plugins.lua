@@ -1,5 +1,12 @@
-Plugin_enable_LSP = false
-Plugin_enable_format = false
+local ok, env = pcall(require, 'env')
+if ok then
+  Env = env
+else
+  Env = {
+    lsp = false,
+    format = false,
+  }
+end
 
 require('lazy').setup {
   spec = {
