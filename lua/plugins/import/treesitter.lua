@@ -22,6 +22,9 @@ return {
       incremental_selection = { enable = true },
       textobjects = { enable = true },
     }
+    require('treesitter-context').setup {
+      enable = false,
+    }
   end,
 }
 -- vim: ts=2 sts=2 sw=2 et
