@@ -16,7 +16,7 @@ return {
     hipatterns.setup {
       highlighters = {
         error = {
-          pattern = fn { 'FIX', 'FIXME', 'ERR', 'ERROR', 'BUG', },
+          pattern = fn { 'FIX', 'FIXME', 'BUG', },
           group = 'Error'
         },
         warn  = {
