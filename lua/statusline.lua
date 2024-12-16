@@ -125,15 +125,17 @@ end
 function Stl_setup()
   local winid = vim.g.statusline_winid
   local bufid = vim.api.nvim_win_get_buf(winid)
+  local current = winid == vim.api.nvim_get_current_win()
 
-  local mode = '%#StlMode#%{v:lua.Stl_mode()}%#StatusLine#'
-  local git_branch = string.format('%s%i%s', '%#StlBranch#%{v:lua.Stl_git_branch(', bufid, ')}%#StatusLine#')
+  local default_hl = current and '%#StatusLine#' or '%#StatusLineNC#'
+  local mode = string.format('%s%s', '%#StlMode#%{v:lua.Stl_mode()}', default_hl)
+  local git_branch = string.format('%s%i%s%s', '%#StlBranch#%{v:lua.Stl_git_branch(', bufid, ')}', default_hl)
   local middle = '%<%q%f %y %h%r%m%w'
   local search = '%{v:lua.Stl_search_count()}'
-  local reg = '%#StlReg#%{v:lua.Stl_reg_recording()}%#StatusLine#'
+  local reg = string.format('%s%s', '%#StlReg#%{v:lua.Stl_reg_recording()}', default_hl)
   local right = '%l:%c %-4.(%p%%%) %L Lines'
 
-  if winid ~= vim.api.nvim_get_current_win() then
+  if not current then
     return string.format(
       '%s%s%s%s%s',
       git_branch, middle, '%=', reg, right
