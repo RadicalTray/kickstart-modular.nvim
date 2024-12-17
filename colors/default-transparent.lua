@@ -38,8 +38,8 @@ vim.api.nvim_set_hl(0, 'StlReg',    { fg = 'NvimLightMagenta', bold = true, cter
 
 vim.api.nvim_set_hl(0, 'DiffDelete', { fg = 'NvimLightGrey1', bg = 'NvimDarkRed', ctermfg = 0, ctermbg = 9 })
 
-vim.api.nvim_set_hl(0, 'Error', { fg = 'NvimDarkGrey2', bg = 'NvimLightRed',    bold = true, ctermfg = 0, ctermbg = 9 })
-vim.api.nvim_set_hl(0, 'Warn',  { fg = 'NvimDarkGrey2', bg = 'NvimLightYellow', bold = true, ctermfg = 0, ctermbg = 11 })
-vim.api.nvim_set_hl(0, 'Todo',  { fg = 'NvimDarkGrey2', bg = 'NvimLightGreen',  bold = true, ctermfg = 0, ctermbg = 10 })
-vim.api.nvim_set_hl(0, 'Hack',  { fg = 'NvimDarkGrey2', bg = 'NvimLightCyan',   bold = true, ctermfg = 0, ctermbg = 14 })
-vim.api.nvim_set_hl(0, 'Note',  { fg = 'NvimDarkGrey2', bg = 'NvimLightBlue',   bold = true, ctermfg = 0, ctermbg = 12 })
+vim.api.nvim_set_hl(0, 'Error', { fg = 'NvimLightRed',    bold = true, ctermfg = 9 })
+vim.api.nvim_set_hl(0, 'Warn',  { fg = 'NvimLightYellow', bold = true, ctermfg = 11 })
+vim.api.nvim_set_hl(0, 'Todo',  { fg = 'NvimLightGreen',  bold = true, ctermfg = 10 })
+vim.api.nvim_set_hl(0, 'Hack',  { fg = 'NvimLightCyan',   bold = true, ctermfg = 14 })
+vim.api.nvim_set_hl(0, 'Note',  { fg = 'NvimLightBlue',   bold = true, ctermfg = 12 })
