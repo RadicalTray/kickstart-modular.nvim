@@ -5,6 +5,7 @@ return {
     dependencies = {
       'williamboman/mason-lspconfig.nvim',
       'williamboman/mason.nvim',
+      'saghen/blink.cmp',
       'echasnovski/mini.nvim', -- for notify
     },
     config = function()
