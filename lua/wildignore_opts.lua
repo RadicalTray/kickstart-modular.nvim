@@ -8,6 +8,10 @@ local function set_wildignore_from_gitignore_pattern(pattern)
         return
     end
 
+    if pattern:sub(1, 1) == '/' then
+        pattern = pattern:sub(2)
+    end
+
     if pattern:sub(-1, -1) ~= '/' then
         vim.opt.wildignore:append(pattern)
         vim.opt.wildignore:append(string.format('%s%s', pattern, '/*'))
