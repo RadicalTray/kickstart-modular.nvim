@@ -20,6 +20,7 @@ return {
     },
     sources = {
       default = { 'path', 'buffer' },
+      cmdline = {},
     },
   },
 }
