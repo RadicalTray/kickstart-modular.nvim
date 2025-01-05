@@ -30,6 +30,11 @@ vim.g.terminal_color_23 = 'NvimLightGrey3'
 -- vim.api.nvim_set_hl(0, 'Normal', { fg = 'NvimLightGrey2', bg = 'None' })
 vim.api.nvim_set_hl(0, 'Visual', { fg = 'NvimDarkGrey2', bg = 'NvimLightGrey2', ctermfg = 0, ctermbg = 15 })
 
+vim.api.nvim_set_hl(0, 'Cursor',        { bg = 'fg', fg = 'NvimDarkGrey2' })
+vim.api.nvim_set_hl(0, 'lCursor',       { bg = 'fg', fg = 'NvimDarkGrey2' })
+vim.api.nvim_set_hl(0, 'CursorLine',    { bg = 'NvimDarkGrey2' })
+vim.api.nvim_set_hl(0, 'CursorColumn',  { bg = 'NvimDarkGrey2' })
+
 vim.api.nvim_set_hl(0, 'StatusLine',   { fg = 'fg', bg = 'NvimDarkGrey2', })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = 'fg', bg = 'NvimDarkGrey1', })
 vim.api.nvim_set_hl(0, 'StlMode',   { fg = 'NvimLightGreen', bold = true, ctermfg = 10 })
