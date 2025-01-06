@@ -85,31 +85,6 @@ vim.opt.expandtab = true
 
 require 'wildignore_opts'
 
--- User commands to quickly enable/disable autoformatting
-vim.g.disable_autoformat = true
-vim.api.nvim_create_user_command('AutoFormatDisable', function(args)
-  if args.bang then
-    -- FormatDisable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = true
-  else
-    vim.g.disable_autoformat = true
-  end
-end, {
-  desc = 'Disable autoformat-on-save',
-  bang = true,
-})
-vim.api.nvim_create_user_command('AutoFormatEnable', function(args)
-  if args.bang then
-    -- FormatEnable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = false
-  else
-    vim.g.disable_autoformat = false
-  end
-end, {
-  desc = 'Re-enable autoformat-on-save',
-  bang = true,
-})
-
 vim.filetype.add {
   extension = { rpy = 'python' },
 }
