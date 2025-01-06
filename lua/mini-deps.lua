@@ -49,30 +49,21 @@ require('nvim-treesitter.configs').setup {
 }
 
 add { source = 'nvim-treesitter/nvim-treesitter-context' }
-require('treesitter-context').setup {
-  enable = false,
-}
+require('treesitter-context').setup { enable = false }
 
-add {
-  source = 'folke/ts-comments.nvim',
-}
----@diagnostic disable-next-line: missing-fields
+add { source = 'folke/ts-comments.nvim' }
 require('ts-comments').setup {}
 
-add {
-  source = 'nmac427/guess-indent.nvim',
-}
+add { source = 'nmac427/guess-indent.nvim' }
 require('guess-indent').setup {}
 
 require('mini.icons').setup {}
 require('mini.extra').setup {}
-
 require('mini.pick').setup {
   window = {
     prompt_cursor = '_',
   },
 }
-
 require('mini.notify').setup {
   window = {
     config = {
@@ -83,9 +74,7 @@ require('mini.notify').setup {
   },
 }
 vim.notify = require('mini.notify').make_notify()
-
 require('mini.git').setup {}
-
 require('mini.diff').setup {
   view = {
     style = 'sign',
@@ -132,128 +121,130 @@ require('blink.cmp').setup {
   },
 }
 
--- conform
-local prettier_fmtr = function(bufnr)
-  if require('conform').get_formatter_info('prettierd', bufnr).available then
-    return { 'prettierd' }
-  else
-    return { 'prettier' }
-  end
+if Env.lsp or Env.format then
+  add { source = 'williamboman/mason.nvim' }
+  require('mason').setup {}
 end
 
-add {
-  source = 'stevearc/conform.nvim',
-}
+if Env.lsp then
+  add {
+    source = 'williamboman/mason-lspconfig.nvim',
+    depends = {
+      'neovim/nvim-lspconfig',
+      'williamboman/mason.nvim', --should already be setup
+      'saghen/blink.cmp', -- should already be setup
+      'folke/lazydev.nvim',
+    },
+  }
 
-vim.g.disable_autoformat = true
-vim.api.nvim_create_user_command('AutoFormatDisable', function(args)
-  if args.bang then
-    -- FormatDisable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = true
-  else
-    vim.g.disable_autoformat = true
-  end
-end, {
-  desc = 'Disable autoformat-on-save',
-  bang = true,
-})
-
-vim.api.nvim_create_user_command('AutoFormatEnable', function(args)
-  if args.bang then
-    -- FormatEnable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = false
-  else
-    vim.g.disable_autoformat = false
-  end
-end, {
-  desc = 'Re-enable autoformat-on-save',
-  bang = true,
-})
-
-require('conform').setup {
-  notify_on_error = false,
-  format_on_save = function(bufnr)
-    -- Disable with a global or buffer-local variable
-    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-      return
-    end
-
-    return {
-      timeout_ms = 500,
-    }
-  end,
-  formatters_by_ft = {
-    lua = { 'stylua' },
-    json = prettier_fmtr,
-    javascript = prettier_fmtr,
-    javascriptreact = prettier_fmtr,
-    cpp = { 'clang-format' },
-    c = { 'clang-format' },
-  },
-}
-
-vim.api.nvim_set_keymap('n', '<leader>f', '', {
-  desc = '[F]ormat buffer',
-  callback = function()
-    require('conform').format {
-      async = true,
-    }
-  end,
-})
-
----@diagnostic disable-next-line: missing-fields
-add {
-  source = 'williamboman/mason-lspconfig.nvim',
-  depends = {
-    'neovim/nvim-lspconfig',
-    'williamboman/mason.nvim',
-    'saghen/blink.cmp', -- should already be setup
-    'folke/lazydev.nvim',
-  },
-}
-
-local server_configs = {
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          pycodestyle = {
-            ignore = { 'W391' },
-            maxLineLength = 69420,
+  local server_configs = {
+    pylsp = {
+      settings = {
+        pylsp = {
+          plugins = {
+            pycodestyle = {
+              ignore = { 'W391' },
+              maxLineLength = 69420,
+            },
           },
         },
       },
     },
-  },
-}
+  }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
----@diagnostic disable-next-line: missing-fields
-require('mason').setup {}
----@diagnostic disable-next-line: missing-fields
-require('mason-lspconfig').setup {
-  handlers = {
-    function(server_name)
-      local server = server_configs[server_name] or {}
-      server.capabilities = vim.tbl_deep_extend('keep', server.capabilities or {}, capabilities)
-      require('lspconfig')[server_name].setup(server)
+  ---@diagnostic disable-next-line: missing-fields
+  require('mason-lspconfig').setup {
+    handlers = {
+      function(server_name)
+        local server = server_configs[server_name] or {}
+        server.capabilities = vim.tbl_deep_extend('keep', server.capabilities or {}, capabilities)
+        require('lspconfig')[server_name].setup(server)
+      end,
+    },
+  }
+
+  ---@diagnostic disable-next-line: missing-fields
+  require('lazydev').setup {
+    library = {
+      { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+    },
+  }
+end
+
+if Env.format then
+  local prettier_fmtr = function(bufnr)
+    if require('conform').get_formatter_info('prettierd', bufnr).available then
+      return { 'prettierd' }
+    else
+      return { 'prettier' }
+    end
+  end
+
+  add {
+    source = 'stevearc/conform.nvim',
+  }
+
+  vim.g.disable_autoformat = true
+  vim.api.nvim_create_user_command('AutoFormatDisable', function(args)
+    if args.bang then
+      -- FormatDisable! will disable formatting just for this buffer
+      vim.b.disable_autoformat = true
+    else
+      vim.g.disable_autoformat = true
+    end
+  end, {
+    desc = 'Disable autoformat-on-save',
+    bang = true,
+  })
+
+  vim.api.nvim_create_user_command('AutoFormatEnable', function(args)
+    if args.bang then
+      -- FormatEnable! will disable formatting just for this buffer
+      vim.b.disable_autoformat = false
+    else
+      vim.g.disable_autoformat = false
+    end
+  end, {
+    desc = 'Re-enable autoformat-on-save',
+    bang = true,
+  })
+
+  require('conform').setup {
+    notify_on_error = false,
+    format_on_save = function(bufnr)
+      -- Disable with a global or buffer-local variable
+      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        return
+      end
+
+      return {
+        timeout_ms = 500,
+      }
     end,
-  },
-}
+    formatters_by_ft = {
+      lua = { 'stylua' },
+      json = prettier_fmtr,
+      javascript = prettier_fmtr,
+      javascriptreact = prettier_fmtr,
+      cpp = { 'clang-format' },
+      c = { 'clang-format' },
+    },
+  }
 
----@diagnostic disable-next-line: missing-fields
-require('lazydev').setup {
-  library = {
-    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-  },
-}
+  vim.api.nvim_set_keymap('n', '<leader>f', '', {
+    desc = '[F]ormat buffer',
+    callback = function()
+      require('conform').format {
+        async = true,
+      }
+    end,
+  })
+end
 
-add {
-  source = 'stevearc/oil.nvim',
-}
-
+add { source = 'stevearc/oil.nvim' }
 require('oil').setup {
   columns = {
     'icon',
@@ -266,12 +257,9 @@ require('oil').setup {
     show_hidden = true,
   },
 }
-
 vim.api.nvim_set_keymap('n', '<leader>oo', '<cmd>Oil %:p:h<CR>', { desc = '[O]pen [O]il.nvim' })
 
-add {
-  source = 'otavioschwanck/arrow.nvim',
-}
+add { source = 'otavioschwanck/arrow.nvim' }
 require('arrow').setup {
   show_icons = true,
   leader_key = '<leader>b',
