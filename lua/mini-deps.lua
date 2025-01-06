@@ -1,12 +1,12 @@
 local path_package = vim.fn.stdpath('data') .. '/site'
 local mini_path = path_package .. '/pack/deps/start/mini.nvim'
-if not vim.loop.fs_stat(mini_path) then
+if not vim.uv.fs_stat(mini_path) then
   vim.cmd('echo "Installing `mini.nvim`" | redraw')
   local clone_cmd = {
     'git', 'clone', '--filter=blob:none',
     'https://github.com/echasnovski/mini.nvim', mini_path
   }
-  vim.fn.system(clone_cmd)
+  vim.system(clone_cmd):wait()
   vim.cmd('packadd mini.nvim | helptags ALL')
   vim.cmd('echo "Installed `mini.nvim`" | redraw')
 end
@@ -26,7 +26,7 @@ add { source = 'nvim-treesitter/nvim-treesitter-textobjects' }
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true,
-        ---@diagnostic disable-next-line: unused-local
+---@diagnostic disable-next-line: unused-local
         disable = function(lang, bufnr)
             local max_filesize = 100 * 1024
             local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
@@ -57,13 +57,48 @@ add {
 }
 require('guess-indent').setup {}
 
-local build_blink = function()
-    vim.fn.system({'cargo', 'build', '--release'})
+require('mini.icons').setup {}
+require('mini.extra').setup {}
+
+require('mini.pick').setup {
+  window = {
+    prompt_cursor = '_',
+  },
+}
+
+require('mini.notify').setup {
+  window = {
+    config = {
+      border = "none",
+    },
+    max_width_share = 0.5,
+    winblend = 0,
+  },
+}
+vim.notify = require('mini.notify').make_notify()
+
+require('mini.git').setup {}
+
+require('mini.diff').setup {
+  view = {
+    style = 'sign',
+    signs = { add = '|', change = '|', delete = '_' },
+  },
+}
+vim.keymap.set('n', '<leader>gh', MiniDiff.toggle_overlay, {
+  desc = 'Toggle [G]it [H]unk overlay',
+})
+
+local build_blink = function(tbl)
+    vim.notify('MiniDeps: Building blink.nvim...')
+    vim.print(tbl)
+    vim.system({'cargo', 'build', '--release'}, { cwd = tbl.path }):wait()
 end
 
 add {
     source = 'saghen/blink.cmp' ,
     depends = { 'rafamadriz/friendly-snippets' },
+    checkout = 'main',
     hooks = {
         post_install = build_blink,
         post_checkout = build_blink,
