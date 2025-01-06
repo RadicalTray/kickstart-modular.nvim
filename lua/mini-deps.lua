@@ -201,11 +201,11 @@ vim.api.nvim_set_keymap (
 
 ---@diagnostic disable-next-line: missing-fields
   add {
-    source = 'neovim/nvim-lspconfig',
+    source = 'williamboman/mason-lspconfig.nvim',
     depends = {
+      'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'saghen/blink.cmp',
+      'saghen/blink.cmp', -- should already be setup
       'folke/lazydev.nvim',
     },
   }
