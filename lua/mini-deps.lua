@@ -87,7 +87,6 @@ vim.keymap.set('n', '<leader>gh', MiniDiff.toggle_overlay, {
 
 local build_blink = function(tbl)
   vim.notify 'MiniDeps: Building blink.nvim...'
-  vim.print(tbl)
   vim.system({ 'cargo', 'build', '--release' }, { cwd = tbl.path }):wait()
 end
 
