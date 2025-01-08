@@ -85,20 +85,24 @@ vim.keymap.set('n', '<leader>gh', MiniDiff.toggle_overlay, {
   desc = 'Toggle [G]it [H]unk overlay',
 })
 
-local build_blink = function(tbl)
-  vim.notify 'MiniDeps: Building blink.nvim...'
-  vim.system({ 'cargo', 'build', '--release' }, { cwd = tbl.path }):wait()
+local function build_blink(tbl)
+  vim.notify('Building blink.cmp', vim.log.levels.INFO)
+  local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = tbl.path }):wait()
+  if obj.code == 0 then
+    vim.notify('Building blink.cmp done', vim.log.levels.INFO)
+  else
+    vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
+  end
 end
 
 add {
-  source = 'saghen/blink.cmp',
-  depends = { 'rafamadriz/friendly-snippets' },
-  checkout = 'main',
+  source = 'Saghen/blink.cmp',
   hooks = {
     post_install = build_blink,
     post_checkout = build_blink,
   },
 }
+
 require('blink.cmp').setup {
   keymap = {
     ['<c-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
