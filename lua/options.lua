@@ -83,7 +83,7 @@ vim.opt.softtabstop = -1
 vim.opt.expandtab = true
 -- vim.opt.showbreak = '↳'
 
-require 'wildignore_opts'
+-- require 'wildignore_opts'
 
 vim.filetype.add {
   extension = { rpy = 'python' },
