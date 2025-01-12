@@ -120,7 +120,6 @@ require('blink.cmp').setup {
   },
   sources = {
     default = { 'path', 'buffer' },
-    cmdline = {},
   },
 }
 
