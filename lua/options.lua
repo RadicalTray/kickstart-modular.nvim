@@ -18,7 +18,7 @@ vim.opt.ruler = false
 vim.opt.showcmd = true
 vim.opt.showcmdloc = 'statusline'
 vim.opt.laststatus = 2
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 require 'statusline'
 -- some hacks are needed, see https://github.com/neovim/neovim/issues/28772
 -- require 'ui' -- it's a pain in the ass and unintuitive rn
