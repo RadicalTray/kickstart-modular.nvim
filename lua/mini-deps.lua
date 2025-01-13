@@ -34,14 +34,14 @@ require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
     ---@diagnostic disable-next-line: unused-local
-    disable = function(lang, bufnr)
-      local max_filesize = 100 * 1024
-      local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-      if ok and stats and stats.size > max_filesize then
-        vim.notify 'File is too big, disabling treesitter highlighting...'
-        return true
-      end
-    end,
+    -- disable = function(lang, bufnr)
+    --   local max_filesize = 100 * 1024
+    --   local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+    --   if ok and stats and stats.size > max_filesize then
+    --     vim.notify 'File is too big, disabling treesitter highlighting...'
+    --     return true
+    --   end
+    -- end,
   },
   indent = { enable = true },
   incremental_selection = { enable = true },
@@ -84,6 +84,9 @@ require('mini.diff').setup {
 vim.keymap.set('n', '<leader>gh', MiniDiff.toggle_overlay, {
   desc = 'Toggle [G]it [H]unk overlay',
 })
+require('mini.files').setup {
+  use_as_default_explorer = true,
+}
 
 local function build_blink(tbl)
   vim.notify('Building blink.cmp', vim.log.levels.INFO)
@@ -241,25 +244,3 @@ if Env.format then
     end,
   })
 end
-
-add { source = 'stevearc/oil.nvim' }
-require('oil').setup {
-  columns = {
-    'icon',
-    -- "permissions",
-    -- "size",
-    { 'mtime', highlight = 'NonText' },
-  },
-  experimental_watch_for_changes = true,
-  view_options = {
-    show_hidden = true,
-  },
-}
-vim.api.nvim_set_keymap('n', '<leader>oo', '<cmd>Oil %:p:h<CR>', { desc = '[O]pen [O]il.nvim' })
-
-add { source = 'otavioschwanck/arrow.nvim' }
-require('arrow').setup {
-  show_icons = true,
-  leader_key = '<leader>b',
-  buffer_leader_key = '<leader>B',
-}
