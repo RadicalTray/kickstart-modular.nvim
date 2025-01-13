@@ -84,9 +84,16 @@ require('mini.diff').setup {
 vim.keymap.set('n', '<leader>gh', MiniDiff.toggle_overlay, {
   desc = 'Toggle [G]it [H]unk overlay',
 })
-require('mini.files').setup {
-  use_as_default_explorer = true,
-}
+require('mini.files').setup {}
+local minifiles_toggle = function(...)
+  if not MiniFiles.close() then MiniFiles.open(...) end
+end
+vim.api.nvim_set_keymap('n', '<leader>o', '', {
+  desc = '[O]pen MiniFiles',
+  callback = function()
+    minifiles_toggle()
+  end,
+})
 
 local function build_blink(tbl)
   vim.notify('Building blink.cmp', vim.log.levels.INFO)
