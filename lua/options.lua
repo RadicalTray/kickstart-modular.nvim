@@ -76,7 +76,9 @@ vim.opt.scrolloff = 5
 -- should be like my terminal cursor but explicitly set
 -- because when guicursor is changed it doesn't change back to my terminal cursor (always to a block instead).
 -- btw the size doesn't work (in Kitty at least)
-vim.opt.guicursor = 'a:hor2,v:hor2-CursorLine'
+-- vim.opt.guicursor = 'a:hor2,v:hor2-CursorLine'
+
+vim.opt.guicursor = 'a:block'
 
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = -1

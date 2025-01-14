@@ -9,7 +9,7 @@ vim.g.terminal_color_5  = 'NvimLightMagenta'
 vim.g.terminal_color_6  = 'NvimLightCyan'
 vim.g.terminal_color_7  = 'NvimLightGrey2'
 
-vim.g.terminal_color_8  = 'NvimLightGrey4'
+vim.g.terminal_color_8  = 'NvimDarkGrey3'
 vim.g.terminal_color_9  = '#feadcd'
 vim.g.terminal_color_10 = '#7ae7b9'
 vim.g.terminal_color_11 = '#ffec9e'
@@ -28,12 +28,12 @@ vim.g.terminal_color_22 = 'NvimDarkCyan'
 vim.g.terminal_color_23 = 'NvimLightGrey3'
 
 -- vim.api.nvim_set_hl(0, 'Normal', { fg = 'NvimLightGrey2', bg = 'None' })
-vim.api.nvim_set_hl(0, 'Visual', { fg = 'NvimDarkGrey2', bg = 'NvimLightGrey2', ctermfg = 0, ctermbg = 15 })
+vim.api.nvim_set_hl(0, 'Visual', { fg = 'NvimLightGrey1', bg = 'NvimDarkGrey3', ctermfg = 0, ctermbg = 15 })
 
-vim.api.nvim_set_hl(0, 'Cursor',        { bg = 'fg', fg = 'NvimDarkGrey2' })
-vim.api.nvim_set_hl(0, 'lCursor',       { bg = 'fg', fg = 'NvimDarkGrey2' })
-vim.api.nvim_set_hl(0, 'CursorLine',    { bg = 'NvimDarkGrey2' })
-vim.api.nvim_set_hl(0, 'CursorColumn',  { bg = 'NvimDarkGrey2' })
+vim.api.nvim_set_hl(0, 'Cursor',        { bg = 'fg', fg = 'NvimDarkGrey1' })
+vim.api.nvim_set_hl(0, 'lCursor',       { bg = 'fg', fg = 'NvimDarkGrey1' })
+vim.api.nvim_set_hl(0, 'CursorLine',    { bg = 'NvimDarkGrey1' })
+vim.api.nvim_set_hl(0, 'CursorColumn',  { bg = 'NvimDarkGrey1' })
 
 vim.api.nvim_set_hl(0, 'StatusLine',   { fg = 'fg', bg = 'NvimDarkGrey2', })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = 'fg', bg = 'NvimDarkGrey1', })
