@@ -16,7 +16,9 @@ end
 
 require('mini.deps').setup { path = { package = path_package } }
 
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local add = MiniDeps.add
+-- local now = MiniDeps.now
+-- local later = MiniDeps.later
 
 -- treesitter
 add {
@@ -31,18 +33,7 @@ add { source = 'nvim-treesitter/nvim-treesitter-textobjects' }
 
 ---@diagnostic disable-next-line: missing-fields
 require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    ---@diagnostic disable-next-line: unused-local
-    -- disable = function(lang, bufnr)
-    --   local max_filesize = 100 * 1024
-    --   local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-    --   if ok and stats and stats.size > max_filesize then
-    --     vim.notify 'File is too big, disabling treesitter highlighting...'
-    --     return true
-    --   end
-    -- end,
-  },
+  highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
@@ -81,18 +72,17 @@ require('mini.diff').setup {
     signs = { add = '|', change = '|', delete = '_' },
   },
 }
-vim.keymap.set('n', '<leader>gh', MiniDiff.toggle_overlay, {
-  desc = 'Toggle [G]it [H]unk overlay',
+vim.keymap.set('n', '<leader>oh', MiniDiff.toggle_overlay, {
+  desc = '[O]pen mini git [H]unk overlay',
 })
 require('mini.files').setup {}
 local minifiles_toggle = function(...)
-  if not MiniFiles.close() then MiniFiles.open(...) end
+  if not MiniFiles.close() then
+    MiniFiles.open(...)
+  end
 end
-vim.api.nvim_set_keymap('n', '<leader>o', '', {
-  desc = '[O]pen MiniFiles',
-  callback = function()
-    minifiles_toggle()
-  end,
+vim.keymap.set('n', '<leader>of', minifiles_toggle, {
+  desc = '[O]pen mini [F]iles',
 })
 
 local function build_blink(tbl)
@@ -129,7 +119,7 @@ require('blink.cmp').setup {
     use_frecency = false,
   },
   sources = {
-    default = { 'path', 'buffer' },
+    -- default = { 'path', 'buffer' },
   },
 }
 
@@ -240,14 +230,16 @@ if Env.format then
       cpp = { 'clang-format' },
       c = { 'clang-format' },
     },
+    default_format_opts = {
+      lsp_format = 'fallback',
+    },
   }
 
-  vim.api.nvim_set_keymap('n', '<leader>f', '', {
+  vim.keymap.set('n', '<leader>f', function()
+    require('conform').format {
+      async = true,
+    }
+  end, {
     desc = '[F]ormat buffer',
-    callback = function()
-      require('conform').format {
-        async = true,
-      }
-    end,
   })
 end
