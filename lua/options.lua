@@ -94,11 +94,4 @@ vim.filetype.add {
 -- LSP stuff
 vim.diagnostic.config { virtual_text = true }
 
--- to make it the same with default nvim keymaps
--- putting this without lsp attach
-vim.keymap.set('n', 'grd', vim.lsp.buf.definition)
-vim.keymap.set('n', 'grD', vim.lsp.buf.declaration)
-vim.keymap.set('n', 'grt', vim.lsp.buf.type_definition)
-vim.keymap.set('n', 'grO', vim.lsp.buf.workspace_symbol)
-
 -- vim: ts=2 sts=2 sw=2 et
