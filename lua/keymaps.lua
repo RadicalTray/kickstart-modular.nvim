@@ -20,18 +20,18 @@ vim.keymap.set('n', 'gR', '')
 -- to make it the same with default nvim keymaps
 -- putting this without lsp attach
 -- should not conflict with anything unless nvim adds new default keymaps
-vim.keymap.set('n', 'grd', vim.lsp.buf.definition)
-vim.keymap.set('n', 'grD', vim.lsp.buf.declaration)
-vim.keymap.set('n', 'grt', vim.lsp.buf.type_definition)
-vim.keymap.set('n', 'grO', vim.lsp.buf.workspace_symbol)
+vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { desc = 'vim.lsp.buf.definition()' })
+vim.keymap.set('n', 'grD', vim.lsp.buf.declaration, { desc = 'vim.lsp.buf.declaration()' })
+vim.keymap.set('n', 'grt', vim.lsp.buf.type_definition, { desc = 'vim.lsp.buf.type_definition()' })
+vim.keymap.set('n', 'grO', vim.lsp.buf.workspace_symbol, { desc = 'vim.lsp.buf.workspace_symbol()' })
 -- normal mode <c-h> is: move left (same as h)
 vim.keymap.set({ 'n', 's', 'i' }, '<c-h>', function()
   vim.snippet.jump(-1)
-end)
+end, { desc = 'Jumps to the previous placeholder in the current snippet, if possible' })
 -- normal mode <c-l> is: nvim__redraw()
 vim.keymap.set({ 'n', 's', 'i' }, '<c-l>', function()
   vim.snippet.jump(1)
-end)
+end, { desc = 'Jumps to the next placeholder in the current snippet, if possible' })
 
 -- i hope i remember commenting this
 -- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
