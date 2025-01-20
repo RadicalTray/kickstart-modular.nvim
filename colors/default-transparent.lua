@@ -32,8 +32,8 @@ vim.api.nvim_set_hl(0, 'Visual', { fg = 'NvimLightGrey1', bg = 'NvimDarkGrey3', 
 
 vim.api.nvim_set_hl(0, 'Cursor',        { bg = 'fg', fg = 'NvimDarkGrey1' })
 vim.api.nvim_set_hl(0, 'lCursor',       { bg = 'fg', fg = 'NvimDarkGrey1' })
-vim.api.nvim_set_hl(0, 'CursorLine',    { bg = 'NvimDarkGrey1' })
-vim.api.nvim_set_hl(0, 'CursorColumn',  { bg = 'NvimDarkGrey1' })
+vim.api.nvim_set_hl(0, 'CursorLine',    { bg = 'NvimDarkGrey2' })
+vim.api.nvim_set_hl(0, 'CursorColumn',  { bg = 'NvimDarkGrey2' })
 
 vim.api.nvim_set_hl(0, 'StatusLine',   { fg = 'fg', bg = 'NvimDarkGrey2', })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = 'fg', bg = 'NvimDarkGrey1', })
