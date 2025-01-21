@@ -92,6 +92,6 @@ vim.filetype.add {
 }
 
 -- LSP stuff
-vim.diagnostic.config { virtual_text = true }
+-- vim.diagnostic.config { virtual_text = true } -- virtual text a bit annoying
 
 -- vim: ts=2 sts=2 sw=2 et
