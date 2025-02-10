@@ -139,7 +139,7 @@ if Env.lsp then
     },
   }
 
-  local server_configs = {
+  local mason_server_configs = {
     pylsp = {
       settings = {
         pylsp = {
@@ -154,15 +154,23 @@ if Env.lsp then
     },
   }
 
+  local local_server_configs = {
+    zls = {},
+  }
+
   ---@diagnostic disable-next-line: missing-fields
   require('mason-lspconfig').setup {
     handlers = {
-      function(server_name)
-        local server = server_configs[server_name] or {}
-        require('lspconfig')[server_name].setup(server)
+      function(name)
+        local config = mason_server_configs[name] or {}
+        require('lspconfig')[name].setup(config)
       end,
     },
   }
+
+  for name, config in pairs(local_server_configs) do
+    require('lspconfig')[name].setup(config)
+  end
 
   ---@diagnostic disable-next-line: missing-fields
   require('lazydev').setup {
